@@ -79,23 +79,36 @@ const skillGroups = [
 const projectData = [
   {
     index: '01',
-    type: 'FRONTEND / API INTEGRATION',
+    category: 'Web Development',
     title: 'Responsive Web Application Component',
     description:
-      'A modular responsive web application demonstrating reusable React components, modern ES6+ development, asynchronous REST API integration using Fetch API and JSON data handling, responsive styling and DOM event handling.',
-    stack: ['React', 'TypeScript', 'JavaScript', 'HTML5', 'CSS3', 'REST APIs'],
+      'Built a responsive and modular web application using React and Vite, with reusable client-side components and modern ES6+ JavaScript. Integrated REST APIs using the Fetch API and JSON handling for asynchronous data retrieval and dynamic content updates. Applied mobile-first responsive styling and event handling for a consistent experience across screen sizes.',
+    stack: ['React', 'TypeScript', 'JavaScript', 'Vite', 'HTML5', 'CSS3', 'REST APIs'],
+    features: [
+      'Reusable React components',
+      'TypeScript-based component development',
+      'REST API integration',
+      'Fetch API and JSON data handling',
+      'Responsive mobile-first UI',
+      'Event-driven interactions',
+    ],
     accent: 'teal',
-    liveDemo: true,
   },
   {
     index: '02',
-    type: 'FULL-STACK ARCHITECTURE / SYSTEM DESIGN',
+    category: 'Full-Stack Architecture / System Design',
     title: 'Elderly Companion System',
     description:
-      'A full-stack architecture and system design project selected as a Top 5 finalist in a Minor Project Competition.',
+      'Developed an elderly companion system designed to support older adults through a practical technology-based solution. The project focused on full-stack architecture, system design and user-oriented functionality.',
     stack: ['Full-Stack Architecture', 'System Design'],
+    features: [
+      'Full-stack architecture',
+      'System design',
+      'User-focused application design',
+      'Practical problem solving',
+    ],
+    achievement: 'Top 5 Finalist — Minor Project Competition',
     accent: 'gold',
-    liveDemo: false,
   },
 ];
 
@@ -400,46 +413,68 @@ function Projects() {
       </SectionHeading>
       <div className="space-y-4">
         {projectData.map((project) => (
-          <article key={project.index} className="project-card group grid gap-8 rounded-2xl border border-border bg-card p-6 sm:p-8 lg:grid-cols-[100px_1fr_0.8fr] lg:items-start">
-            <div className="flex items-center justify-between lg:block">
-              <span className={`font-display text-5xl font-semibold ${project.accent === 'gold' ? 'text-accent' : 'text-primary'}`}>
-                {project.index}
-              </span>
-              <ArrowUpRight size={20} className="text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 lg:mt-20" />
+          <article key={project.index} className="project-card group rounded-2xl border border-border bg-card p-6 sm:p-8">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+              <div className="flex items-start gap-5">
+                <span className={`font-display text-5xl font-semibold leading-none ${project.accent === 'gold' ? 'text-accent' : 'text-primary'}`}>
+                  {project.index}
+                </span>
+                <div>
+                  <p className="eyebrow">{project.category}</p>
+                  <h3 className="mt-3 max-w-2xl font-display text-3xl font-semibold leading-tight">{project.title}</h3>
+                </div>
+              </div>
+              <ArrowUpRight size={20} className="hidden text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 sm:block" />
             </div>
-            <div>
-              <p className="eyebrow">{project.type}</p>
-              <h3 className="mt-3 max-w-lg font-display text-3xl font-semibold leading-tight">{project.title}</h3>
+            <div className="mt-8 grid gap-8 border-t border-border pt-7 lg:grid-cols-[1.1fr_0.9fr]">
+              <div>
+                <p className="text-sm leading-7 text-muted-foreground">{project.description}</p>
+                {project.achievement && (
+                  <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-accent/35 bg-accent/10 px-3 py-2 text-xs font-semibold text-foreground">
+                    <Trophy size={14} className="text-accent" />
+                    {project.achievement}
+                  </div>
+                )}
+              </div>
+              <div>
+                <p className="eyebrow">Key features</p>
+                <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                  {project.features.map((feature) => (
+                    <li key={feature} className="flex items-start gap-2 text-sm text-foreground/80">
+                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                      {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-            <div>
-              <p className="text-sm leading-7 text-muted-foreground">{project.description}</p>
-              <div className="mt-6 flex flex-wrap gap-2">
+            <div className="mt-8 border-t border-border pt-5">
+              <p className="eyebrow">Technologies</p>
+              <div className="mt-3 flex flex-wrap gap-2">
                 {project.stack.map((item) => (
                   <span key={item} className="rounded-full border border-border px-3 py-1.5 font-mono text-[10px] text-muted-foreground">
                     {item}
                   </span>
                 ))}
               </div>
-              <div className="mt-6 flex flex-wrap gap-2 border-t border-border pt-5">
-                <button
-                  type="button"
-                  onClick={() => unavailableAction(`${project.title} GitHub repository`)}
-                  className="focus-ring inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold transition-colors hover:border-primary hover:text-primary"
-                  data-testid={`button-project-${project.index}-github`}
-                >
-                  <Github size={14} /> GitHub <span className="font-mono text-[10px] text-muted-foreground">placeholder</span>
-                </button>
-                {project.liveDemo && (
-                  <button
-                    type="button"
-                    onClick={() => unavailableAction(`${project.title} live demo`)}
-                    className="focus-ring inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold transition-colors hover:border-primary hover:text-primary"
-                    data-testid={`button-project-${project.index}-demo`}
-                  >
-                    <ExternalLink size={14} /> Live Demo <span className="font-mono text-[10px] text-muted-foreground">placeholder</span>
-                  </button>
-                )}
-              </div>
+            </div>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <button
+                type="button"
+                onClick={() => unavailableAction(`${project.title} GitHub repository`)}
+                className="focus-ring inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold transition-colors hover:border-primary hover:text-primary"
+                data-testid={`button-project-${project.index}-github`}
+              >
+                <Github size={14} /> GitHub <span className="font-mono text-[10px] text-muted-foreground">placeholder</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => unavailableAction(`${project.title} live demo`)}
+                className="focus-ring inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold transition-colors hover:border-primary hover:text-primary"
+                data-testid={`button-project-${project.index}-demo`}
+              >
+                <ExternalLink size={14} /> Live Demo <span className="font-mono text-[10px] text-muted-foreground">placeholder</span>
+              </button>
             </div>
           </article>
         ))}
