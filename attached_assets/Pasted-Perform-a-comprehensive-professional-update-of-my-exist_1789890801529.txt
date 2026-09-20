@@ -1,0 +1,386 @@
+Perform a comprehensive professional update of my existing portfolio website.
+
+IMPORTANT:
+- Do NOT rebuild the project from scratch.
+- Preserve the existing React + TypeScript + Vite architecture.
+- Preserve the current Hero section, Navbar and overall visual design unless a change is explicitly requested below.
+- Make all requested changes in one pass.
+- Do not invent personal information, URLs, email addresses, project technologies, project features or achievements.
+- Use placeholders wherever my real information is not yet provided.
+- Keep the website production-ready and responsive.
+- After making changes, run TypeScript checking and the Vite production build and fix any errors.
+
+==================================================
+1. HERO SECTION
+==================================================
+
+Keep the current Hero design and content.
+
+Name:
+Chethan Nayaka K M
+
+Title:
+B.E. Computer Science and Engineering (AI & ML)
+
+Current headline:
+"Building practical software with AI & technology."
+
+Keep:
+- View Projects button
+- Download CV button
+- GitHub
+- LinkedIn
+- Email
+
+Use placeholders for GitHub, LinkedIn and Email until real values are provided.
+
+==================================================
+2. ABOUT SECTION
+==================================================
+
+Create a concise professional About section.
+
+Use this information:
+
+" I am a final-year B.E. Computer Science and Engineering (AI & ML) student interested in software development, AI/ML, web technologies and building practical applications. I enjoy learning through projects and applying programming, problem-solving and system design concepts to real-world problems."
+
+Keep the writing professional and concise.
+
+Do not exaggerate experience or claim professional employment.
+
+==================================================
+3. TECHNICAL SKILLS SECTION
+==================================================
+
+Create a clean categorized skills section.
+
+Programming:
+- Python
+- JavaScript
+- TypeScript
+- C
+
+Web Development:
+- HTML5
+- CSS3
+- React
+- Vite
+- REST APIs
+- Fetch API
+
+CS Fundamentals:
+- Object-Oriented Programming
+- Operating Systems
+- Computer Networks
+- Data Structures and Algorithms
+
+Data / AI:
+- Machine Learning
+- NumPy
+- Pandas
+
+Tools:
+- Git
+- GitHub
+
+Do NOT add technologies that were not listed above.
+
+Display skills using clean cards/tags/icons where appropriate.
+
+==================================================
+4. PROJECTS SECTION
+==================================================
+
+Keep the existing two main projects but improve their presentation.
+
+PROJECT 1
+
+Title:
+Responsive Web Application Component
+
+Category:
+Web Development
+
+Technologies:
+React, TypeScript, JavaScript, Vite, HTML5, CSS3, REST APIs
+
+Description:
+"Built a responsive and modular web application using React and Vite, with reusable client-side components and modern ES6+ JavaScript. Integrated REST APIs using the Fetch API and JSON handling for asynchronous data retrieval and dynamic content updates. Applied mobile-first responsive styling and event handling for a consistent experience across screen sizes."
+
+Feature points:
+- Reusable React components
+- TypeScript-based component development
+- REST API integration
+- Fetch API and JSON data handling
+- Responsive mobile-first UI
+- Event-driven interactions
+
+PROJECT 2
+
+Title:
+Elderly Companion System
+
+Category:
+Full-Stack Architecture / System Design
+
+Description:
+"Developed an elderly companion system focused on designing a practical technology-based solution for older adults. The project emphasized full-stack architecture, system design and user-oriented application development."
+
+Achievement:
+"Top 5 Finalist — Minor Project Competition"
+
+Feature points:
+- Full-stack architecture
+- System design
+- User-focused application design
+- Practical problem solving
+
+Do NOT invent additional technical features for this project.
+
+For both projects:
+- Technology tags
+- Clean project cards
+- GitHub button
+- Live Demo button
+- Use placeholders for URLs
+- Do not invent URLs
+- Responsive layout
+- Professional hover effects
+
+==================================================
+5. REST API DEMONSTRATION
+==================================================
+
+KEEP the existing working REST API demonstration.
+
+It currently uses:
+
+GET:
+https://jsonplaceholder.typicode.com/todos/1
+
+It successfully demonstrates:
+- Fetch API
+- GET request
+- HTTP 200 response
+- JSON parsing
+- Dynamic response display
+
+Improve the presentation slightly so it looks like a polished portfolio feature rather than a raw developer console.
+
+Keep:
+- Loading state
+- Success state
+- Error state
+- Parsed JSON display
+
+Clearly label it as:
+"Live REST API Demonstration"
+
+Add a short explanation:
+
+"This section demonstrates asynchronous REST API integration using Fetch API and JSON response handling."
+
+Do not replace the working API with mock data.
+
+==================================================
+6. ACHIEVEMENTS SECTION
+==================================================
+
+Create a professional Achievement section.
+
+Achievement:
+
+"Top 5 Finalist — Minor Project Competition"
+
+Associated project:
+"Elderly Companion System"
+
+Do not add other achievements.
+
+==================================================
+7. EDUCATION SECTION
+==================================================
+
+Add:
+
+B.E. Computer Science and Engineering (AI & ML)
+NIE / NIE North
+Expected Graduation: 2027
+
+Keep it clean and concise.
+
+Do not invent CGPA or other academic information.
+
+==================================================
+8. RESUME / CV BUTTON
+==================================================
+
+Keep the "Download CV" button.
+
+Create the correct structure so that a real CV PDF can be connected later.
+
+Until the actual CV file is provided:
+- Do NOT create a fake CV.
+- Do NOT create a fake download URL.
+- Use a clearly marked placeholder or disabled state.
+
+Make it easy to replace the placeholder with the real CV PDF later.
+
+==================================================
+9. CONTACT SECTION
+==================================================
+
+Create a professional Contact section.
+
+Include:
+- Email
+- LinkedIn
+- GitHub
+
+Use placeholders for the actual values.
+
+Also include a contact form UI containing:
+- Name
+- Email
+- Message
+- Submit button
+
+For now, do NOT pretend the form sends email if no backend/email service exists.
+
+Show an appropriate message or make it a frontend-only form until a real backend/service is configured.
+
+==================================================
+10. FOOTER
+==================================================
+
+Add a simple professional footer:
+
+"© 2027 Chethan Nayaka K M"
+
+Include:
+- GitHub
+- LinkedIn
+- Email
+
+Use placeholders until real links are supplied.
+
+==================================================
+11. NAVIGATION
+==================================================
+
+Ensure navbar links correctly scroll to:
+
+Home
+About
+Skills
+Projects
+Achievements
+Education
+Contact
+
+Use smooth scrolling.
+
+Ensure the mobile navigation works correctly.
+
+==================================================
+12. RESPONSIVE DESIGN
+==================================================
+
+Thoroughly optimize the entire website for:
+
+- Mobile phones
+- Tablets
+- Laptops
+- Desktop monitors
+
+Use a mobile-first approach.
+
+Check:
+- No horizontal overflow
+- Text does not get cut off
+- Project cards stack correctly
+- Navigation works on mobile
+- Buttons remain usable
+- API demonstration fits smaller screens
+- Images/visual elements scale correctly
+- Sections have appropriate spacing
+
+==================================================
+13. ACCESSIBILITY AND CODE QUALITY
+==================================================
+
+Use:
+- Semantic HTML
+- Accessible button labels
+- Appropriate alt text where images exist
+- Keyboard-friendly interactions
+- Proper TypeScript types
+- Reusable React components
+- Clean component organization
+- No unnecessary duplicated code
+
+Maintain a structure similar to:
+
+src/
+  components/
+    Navbar.tsx
+    Hero.tsx
+    About.tsx
+    Skills.tsx
+    Projects.tsx
+    ApiDemo.tsx
+    Achievements.tsx
+    Education.tsx
+    Contact.tsx
+    Footer.tsx
+
+Use additional files/components only when useful.
+
+==================================================
+14. VISUAL DESIGN
+==================================================
+
+Maintain the existing professional visual identity.
+
+Improve consistency across:
+- Typography
+- Spacing
+- Cards
+- Buttons
+- Section headings
+- Technology tags
+- Hover states
+
+Avoid:
+- Excessive animations
+- Overly flashy effects
+- Stock photos
+- Generic template appearance
+- Unnecessary gradients
+- Fake statistics
+- Fake testimonials
+
+The portfolio should look like a genuine software engineering student's portfolio.
+
+==================================================
+15. FINAL VERIFICATION
+==================================================
+
+After completing ALL changes:
+
+1. Run TypeScript checks.
+2. Run the Vite production build.
+3. Fix all TypeScript/build errors.
+4. Verify the REST API request works.
+5. Verify navigation.
+6. Verify mobile responsiveness.
+7. Verify desktop responsiveness.
+8. Verify no broken links are caused by placeholder URLs.
+9. Verify the application starts successfully.
+
+Finally provide a concise summary of:
+- What was changed
+- Verification status
+- Any remaining placeholders that require my real information
+
+Do not make additional unrelated changes.

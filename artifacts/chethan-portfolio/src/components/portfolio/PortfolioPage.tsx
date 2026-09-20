@@ -12,13 +12,15 @@ import {
   ExternalLink,
   Github,
   GraduationCap,
-  Layers3,
   Linkedin,
   LoaderCircle,
+  MapPin,
+  Phone,
   Menu,
   Radio,
   RefreshCw,
   Send,
+  School,
   ShieldCheck,
   Terminal,
   Trophy,
@@ -32,6 +34,7 @@ const navItems = [
   { label: 'Home', href: '#home' },
   { label: 'About', href: '#about' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Experience', href: '#experience' },
   { label: 'Projects', href: '#projects' },
   { label: 'Achievements', href: '#achievements' },
   { label: 'Education', href: '#education' },
@@ -41,74 +44,123 @@ const navItems = [
 const skillGroups = [
   {
     number: '01',
-    title: 'Programming',
+    title: 'Web Technologies',
     icon: Braces,
-    skills: ['Python', 'JavaScript', 'TypeScript', 'C'],
-    note: 'Clear logic and dependable foundations.',
+    skills: [
+      'HTML5',
+      'CSS3',
+      'JavaScript (ES6+)',
+      'Web APIs',
+      'DOM Manipulation',
+      'Fetch API',
+      'Async/Await',
+      'JSON',
+      'REST APIs',
+      'TypeScript',
+      'React',
+      'Vite',
+    ],
+    note: 'Client-side foundations for practical interfaces.',
   },
   {
     number: '02',
-    title: 'Web',
-    icon: Layers3,
-    skills: ['HTML5', 'CSS3', 'React', 'Vite'],
-    note: 'Interfaces that hold up under use.',
+    title: 'Programming',
+    icon: Terminal,
+    skills: ['Python', 'C'],
+    note: 'Clear logic and dependable foundations.',
   },
   {
     number: '03',
-    title: 'CS Fundamentals',
+    title: 'Core CS & Machine Learning',
     icon: Database,
-    skills: ['OOP', 'Operating Systems', 'Computer Networks'],
-    note: 'The concepts behind practical software.',
+    skills: [
+      'Data Structures & Algorithms',
+      'Object-Oriented Programming (OOP)',
+      'NumPy',
+      'Pandas',
+      'Scikit-learn',
+      'Decision Trees',
+      'Logistic Regression',
+    ],
+    note: 'Foundations for solving problems and learning from data.',
   },
   {
     number: '04',
-    title: 'Data / AI',
+    title: 'Tools & Version Control',
     icon: ShieldCheck,
-    skills: ['Machine Learning', 'NumPy', 'Pandas'],
-    note: 'Finding patterns and building useful models.',
-  },
-  {
-    number: '05',
-    title: 'Tools',
-    icon: Terminal,
-    skills: ['Git', 'GitHub', 'REST APIs'],
+    skills: ['Git', 'GitHub', 'VS Code'],
     note: 'A reliable loop from idea to delivery.',
   },
 ];
 
-const projectData = [
+type Project = {
+  index: string;
+  category: string;
+  title: string;
+  description: string;
+  stack: string[];
+  features: string[];
+  achievement?: string;
+  github?: string;
+  liveDemo?: string;
+  accent: 'teal' | 'gold';
+};
+
+const projectData: Project[] = [
   {
     index: '01',
-    category: 'Web Development',
-    title: 'Responsive Web Application Component',
+    category: 'Full-Stack Architecture / System Design',
+    title: 'Elderly Companion System',
     description:
-      'Built a responsive and modular web application using React and Vite, with reusable client-side components and modern ES6+ JavaScript. Integrated REST APIs using the Fetch API and JSON handling for asynchronous data retrieval and dynamic content updates. Applied mobile-first responsive styling and event handling for a consistent experience across screen sizes.',
-    stack: ['React', 'TypeScript', 'JavaScript', 'Vite', 'HTML5', 'CSS3', 'REST APIs'],
+      'Collaborated on a team-based minor project focused on technical solutions and problem-domain analysis for elderly assistance. Contributed to system design, workflow structure and technical presentation.',
+    stack: [],
+    features: [],
+    achievement: 'Top 5 Finalist — Minor Project Competition',
+    github: 'https://github.com/chethannayaka/MINOR_ELDERLY_COMPANION',
+    accent: 'gold',
+  },
+  {
+    index: '02',
+    category: 'Machine Learning',
+    title: 'Student Performance Prediction System',
+    description:
+      'Built an end-to-end machine learning classification workflow to predict student pass/fail outcomes based on attendance and academic indicators.',
+    stack: ['Python', 'Pandas', 'Scikit-learn'],
     features: [
-      'Reusable React components',
-      'TypeScript-based component development',
-      'REST API integration',
-      'Fetch API and JSON data handling',
-      'Responsive mobile-first UI',
-      'Event-driven interactions',
+      'Data cleaning',
+      'Missing value handling',
+      'Feature encoding',
+      'Machine learning classification',
+      'Student pass/fail prediction',
     ],
     accent: 'teal',
   },
   {
-    index: '02',
-    category: 'Full-Stack Architecture / System Design',
-    title: 'Elderly Companion System',
+    index: '03',
+    category: 'Technical Documentation & Architecture',
+    title: 'AI-Enabled Smart Public Distribution System',
     description:
-      'Developed an elderly companion system designed to support older adults through a practical technology-based solution. The project focused on full-stack architecture, system design and user-oriented functionality.',
-    stack: ['Full-Stack Architecture', 'System Design'],
-    features: [
-      'Full-stack architecture',
-      'System design',
-      'User-focused application design',
-      'Practical problem solving',
-    ],
-    achievement: 'Top 5 Finalist — Minor Project Competition',
+      'Authored detailed technical documentation and system specification reports for an IoT-integrated public distribution platform featuring QR-based authentication and weight verification.',
+    stack: [],
+    features: [],
     accent: 'gold',
+  },
+  {
+    index: '04',
+    category: 'Web Development',
+    title: 'Responsive Web Application Component',
+    description:
+      'Developing an interactive client-side web interface applying responsive design principles, DOM manipulation and asynchronous JSON fetching.',
+    stack: ['HTML5', 'CSS3', 'JavaScript', 'Web APIs', 'React', 'TypeScript', 'Vite', 'REST APIs'],
+    features: [
+      'Reusable React components',
+      'REST API integration',
+      'Fetch API',
+      'JSON handling',
+      'Responsive design',
+      'Event handling',
+    ],
+    accent: 'teal',
   },
 ];
 
@@ -186,7 +238,7 @@ function Header() {
           </span>
           <span className="hidden text-sm font-bold tracking-tight sm:block">Chethan Nayaka K M</span>
         </a>
-        <nav className="hidden items-center gap-6 md:flex" aria-label="Primary navigation">
+        <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
           {navItems.map((item) => (
             <a
               key={item.href}
@@ -198,14 +250,14 @@ function Header() {
             </a>
           ))}
         </nav>
-        <div className="hidden md:block">
+        <div className="hidden lg:block">
           <ButtonLink href="#contact" variant="quiet" testId="link-header-contact">
             Let&apos;s connect <ArrowUpRight size={15} />
           </ButtonLink>
         </div>
         <button
           type="button"
-          className="focus-ring rounded-md p-2 md:hidden"
+          className="focus-ring rounded-md p-2 lg:hidden"
           onClick={() => setMenuOpen((open) => !open)}
           aria-expanded={menuOpen}
           aria-controls="mobile-navigation"
@@ -216,7 +268,7 @@ function Header() {
         </button>
       </div>
       {menuOpen && (
-        <nav id="mobile-navigation" className="border-t border-border bg-background px-5 py-4 md:hidden" aria-label="Mobile navigation">
+        <nav id="mobile-navigation" className="border-t border-border bg-background px-5 py-4 lg:hidden" aria-label="Mobile navigation">
           <div className="section-wrap flex flex-col gap-1">
             {navItems.map((item) => (
               <a
@@ -258,7 +310,7 @@ function Hero() {
             </span>
           </h1>
           <p className="hero-entrance-late mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-            I&apos;m Chethan Nayaka K M, a final-year B.E. Computer Science and Engineering (AI &amp; ML) student interested in software development, AI/ML, and building practical applications.
+            I&apos;m Chethan Nayaka K M, a final-year B.E. Computer Science and Engineering (AI &amp; ML) student interested in software development, AI/ML, web technologies and building practical applications.
           </p>
           <div className="hero-entrance-late mt-9 flex flex-wrap gap-3">
             <ButtonLink href="#projects" testId="link-hero-projects">
@@ -278,14 +330,14 @@ function Hero() {
             <span>Graduation: 2027</span>
           </div>
           <div className="hero-entrance-late mt-7 flex flex-wrap gap-5 text-xs font-semibold">
-            <a href="#contact" className="focus-ring text-foreground hover:text-primary" data-testid="link-hero-github">
-              GitHub <span className="font-mono text-[10px] font-normal text-muted-foreground">placeholder</span>
+            <a href="https://github.com/chethannayaka" target="_blank" rel="noreferrer" className="focus-ring text-foreground hover:text-primary" data-testid="link-hero-github">
+              GitHub
             </a>
-            <a href="#contact" className="focus-ring text-foreground hover:text-primary" data-testid="link-hero-linkedin">
-              LinkedIn <span className="font-mono text-[10px] font-normal text-muted-foreground">placeholder</span>
+            <a href="https://www.linkedin.com/in/chethan-nayaka-km-8407713b2" target="_blank" rel="noreferrer" className="focus-ring text-foreground hover:text-primary" data-testid="link-hero-linkedin">
+              LinkedIn
             </a>
-            <a href="#contact" className="focus-ring text-foreground hover:text-primary" data-testid="link-hero-email">
-              Email <span className="font-mono text-[10px] font-normal text-muted-foreground">placeholder</span>
+            <a href="mailto:nayakchethan666@gmail.com" className="focus-ring text-foreground hover:text-primary" data-testid="link-hero-email">
+              Email
             </a>
           </div>
         </div>
@@ -342,10 +394,7 @@ function About() {
       <div className="grid gap-10 border-t border-border pt-10 md:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-5 text-lg leading-8 text-foreground/80">
           <p>
-            I&apos;m a final-year B.E. Computer Science and Engineering (AI &amp; ML) student at <strong className="font-semibold text-foreground">NIE / NIE North</strong>. I enjoy understanding the problem first, then shaping the smallest clear solution that can grow.
-          </p>
-          <p className="text-muted-foreground">
-            That means caring about the details people feel — responsive layouts, useful states, accessible interactions — while staying curious about APIs, architecture, and the decisions underneath.
+            Final-year B.E. Computer Science and Engineering (AI &amp; ML) student with hands-on experience in web development, machine learning, system design and technical collaboration. Interested in building practical software solutions and applying programming, problem-solving and engineering concepts to real-world problems.
           </p>
         </div>
         <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-2">
@@ -403,12 +452,74 @@ function Skills() {
   );
 }
 
+function Experience() {
+  const experiences = [
+    {
+      number: '01',
+      title: 'Technical & Mentorship Intern — MTD Community',
+      organization: 'NIE Mysore',
+      icon: GraduationCap,
+      description: [
+        'Selected through a competitive skill-development program to collaborate with the core MTD team on technical initiatives.',
+        'Assisted in facilitating technical training sessions and workshops for engineering students across semester levels.',
+      ],
+    },
+    {
+      number: '02',
+      title: 'Technical Volunteer & Maintainer — Smart India Hackathon (SIH)',
+      organization: 'College Center',
+      icon: Terminal,
+      description: [
+        'Managed technical infrastructure and network setup for participating teams during campus hackathon rounds.',
+        'Troubleshot real-time technical issues to ensure smooth execution of competition sessions.',
+      ],
+    },
+  ];
+
+  return (
+    <section id="experience" className="scroll-mt-24 border-b border-border py-24 sm:py-32">
+      <div className="section-wrap">
+        <SectionHeading number="03" eyebrow="Experience & leadership" title="Technical work with people at the center.">
+          <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+            Experience shaped by technical collaboration, mentorship and keeping shared systems working when they matter.
+          </p>
+        </SectionHeading>
+        <div className="grid gap-4 lg:grid-cols-2">
+          {experiences.map((experience) => {
+            const Icon = experience.icon;
+            return (
+              <article key={experience.number} className="rounded-2xl border border-border bg-card p-7 sm:p-9">
+                <div className="flex items-start justify-between gap-5">
+                  <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary">
+                    <Icon size={23} strokeWidth={1.5} />
+                  </div>
+                  <span className="font-mono text-xs text-muted-foreground">{experience.number}</span>
+                </div>
+                <h3 className="mt-10 font-display text-2xl font-semibold leading-tight">{experience.title}</h3>
+                <p className="mt-3 text-sm font-semibold text-primary">{experience.organization}</p>
+                <ul className="mt-7 space-y-4 border-t border-border pt-6">
+                  {experience.description.map((item) => (
+                    <li key={item} className="flex items-start gap-3 text-sm leading-7 text-muted-foreground">
+                      <span className="mt-3 h-1.5 w-1.5 shrink-0 rounded-full bg-accent" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 function Projects() {
   return (
     <section id="projects" className="section-wrap scroll-mt-24 py-24 sm:py-32">
-      <SectionHeading number="03" eyebrow="Selected work" title="Projects that stay close to the real problem.">
+      <SectionHeading number="04" eyebrow="Selected work" title="Projects that stay close to the real problem.">
         <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
-          Two projects that reflect how I work: make the experience clear, make the structure considered.
+          A current set of practical software, machine learning, documentation and interface work.
         </p>
       </SectionHeading>
       <div className="space-y-4">
@@ -426,7 +537,7 @@ function Projects() {
               </div>
               <ArrowUpRight size={20} className="hidden text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 sm:block" />
             </div>
-            <div className="mt-8 grid gap-8 border-t border-border pt-7 lg:grid-cols-[1.1fr_0.9fr]">
+            <div className={`mt-8 grid gap-8 border-t border-border pt-7 ${project.features.length > 0 ? 'lg:grid-cols-[1.1fr_0.9fr]' : ''}`}>
               <div>
                 <p className="text-sm leading-7 text-muted-foreground">{project.description}</p>
                 {project.achievement && (
@@ -436,46 +547,58 @@ function Projects() {
                   </div>
                 )}
               </div>
-              <div>
-                <p className="eyebrow">Key features</p>
-                <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-                  {project.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-sm text-foreground/80">
-                      <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
-                      {feature}
-                    </li>
+              {project.features.length > 0 && (
+                <div>
+                  <p className="eyebrow">Key features</p>
+                  <ul className="mt-4 grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+                    {project.features.map((feature) => (
+                      <li key={feature} className="flex items-start gap-2 text-sm text-foreground/80">
+                        <span className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-primary" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+            {project.stack.length > 0 && (
+              <div className="mt-8 border-t border-border pt-5">
+                <p className="eyebrow">Technologies</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {project.stack.map((item) => (
+                    <span key={item} className="rounded-full border border-border px-3 py-1.5 font-mono text-[10px] text-muted-foreground">
+                      {item}
+                    </span>
                   ))}
-                </ul>
+                </div>
               </div>
-            </div>
-            <div className="mt-8 border-t border-border pt-5">
-              <p className="eyebrow">Technologies</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {project.stack.map((item) => (
-                  <span key={item} className="rounded-full border border-border px-3 py-1.5 font-mono text-[10px] text-muted-foreground">
-                    {item}
-                  </span>
-                ))}
+            )}
+            {(project.github || project.liveDemo) && (
+              <div className="mt-6 flex flex-wrap gap-2">
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="focus-ring inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold transition-colors hover:border-primary hover:text-primary"
+                    data-testid={`link-project-${project.index}-github`}
+                  >
+                    <Github size={14} /> GitHub
+                  </a>
+                )}
+                {project.liveDemo && (
+                  <a
+                    href={project.liveDemo}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="focus-ring inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold transition-colors hover:border-primary hover:text-primary"
+                    data-testid={`link-project-${project.index}-demo`}
+                  >
+                    <ExternalLink size={14} /> Live Demo
+                  </a>
+                )}
               </div>
-            </div>
-            <div className="mt-6 flex flex-wrap gap-2">
-              <button
-                type="button"
-                onClick={() => unavailableAction(`${project.title} GitHub repository`)}
-                className="focus-ring inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold transition-colors hover:border-primary hover:text-primary"
-                data-testid={`button-project-${project.index}-github`}
-              >
-                <Github size={14} /> GitHub <span className="font-mono text-[10px] text-muted-foreground">placeholder</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => unavailableAction(`${project.title} live demo`)}
-                className="focus-ring inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 text-xs font-semibold transition-colors hover:border-primary hover:text-primary"
-                data-testid={`button-project-${project.index}-demo`}
-              >
-                <ExternalLink size={14} /> Live Demo <span className="font-mono text-[10px] text-muted-foreground">placeholder</span>
-              </button>
-            </div>
+            )}
           </article>
         ))}
       </div>
@@ -489,7 +612,7 @@ function Achievements() {
       <div className="section-wrap">
         <div className="mb-12 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-secondary-foreground/55">
           <Trophy size={16} className="text-accent" />
-          <span>04 / Proof of work</span>
+          <span>05 / Proof of work</span>
         </div>
         <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-end">
           <div>
@@ -501,12 +624,12 @@ function Achievements() {
             </p>
           </div>
           <div className="border-l border-secondary-foreground/20 pl-7 sm:pl-12">
-            <p className="eyebrow text-accent">Competition highlight</p>
+            <p className="eyebrow text-accent">Achievement</p>
             <h2 className="display-title mt-5 max-w-2xl text-4xl font-semibold leading-[0.98] sm:text-6xl">
-              Elderly Companion System selected as a Top 5 finalist.
+              Top 5 Finalist — Minor Project Competition
             </h2>
             <p className="mt-7 max-w-xl text-base leading-7 text-secondary-foreground/65">
-              A meaningful checkpoint for a project built around full-stack architecture and system design — and a reminder that technical work matters most when it serves a real need.
+              Associated project: Elderly Companion System
             </p>
           </div>
         </div>
@@ -518,7 +641,7 @@ function Achievements() {
 function Education() {
   return (
     <section id="education" className="section-wrap scroll-mt-24 py-24 sm:py-32">
-      <SectionHeading number="05" eyebrow="Where I am learning" title="A computer science foundation with an AI & ML direction." />
+      <SectionHeading number="06" eyebrow="Where I am learning" title="A computer science foundation with an AI & ML direction." />
       <div className="grid gap-4 md:grid-cols-[1fr_0.42fr]">
         <div className="rounded-2xl border border-border bg-card p-7 sm:p-9">
           <div className="flex items-start justify-between gap-6">
@@ -530,16 +653,22 @@ function Education() {
           <h3 className="mt-12 max-w-2xl font-display text-3xl font-semibold leading-tight sm:text-4xl">
             B.E. Computer Science and Engineering (AI &amp; ML)
           </h3>
-          <div className="mt-8 flex flex-wrap gap-x-8 gap-y-3 border-t border-border pt-5 text-sm">
-            <span className="font-semibold">NIE / NIE North</span>
-            <span className="text-muted-foreground">Graduation: 2027</span>
+          <div className="mt-8 space-y-3 border-t border-border pt-5 text-sm">
+            <p className="font-semibold">The National Institute of Engineering</p>
+            <p className="text-muted-foreground">Mysore, India</p>
+            <div className="flex flex-wrap gap-x-8 gap-y-3 pt-2">
+              <span className="text-muted-foreground">CGPA: 6.63 / 10.00</span>
+              <span className="text-muted-foreground">Expected Graduation: 2027</span>
+            </div>
           </div>
         </div>
         <div className="flex flex-col justify-between rounded-2xl border border-border bg-muted/40 p-7 sm:p-9">
-          <Terminal size={23} className="text-primary" strokeWidth={1.5} />
-          <p className="mt-14 text-sm leading-7 text-muted-foreground">
-            Learning by moving between fundamentals, working software, and the questions that appear when the two meet.
-          </p>
+          <School size={23} className="text-primary" strokeWidth={1.5} />
+          <div className="mt-14">
+            <p className="eyebrow">Class XII / PUC</p>
+            <p className="mt-3 font-display text-2xl font-semibold">Pre-University Education</p>
+            <p className="mt-3 text-sm leading-7 text-muted-foreground">Percentage: 90.00%</p>
+          </div>
         </div>
       </div>
     </section>
@@ -572,11 +701,11 @@ function ApiDemo() {
       <div className="flex flex-col gap-5 border-b border-secondary-foreground/15 pb-5 sm:flex-row sm:items-start sm:justify-between">
         <div>
           <div className="flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
-            <Radio size={14} /> Live browser request
+            <Radio size={14} /> Live REST API Demonstration
           </div>
-          <h3 className="mt-3 font-display text-2xl font-semibold">REST API demonstration</h3>
+          <h3 className="mt-3 font-display text-2xl font-semibold">Live REST API Demonstration</h3>
           <p className="mt-2 max-w-md text-sm leading-6 text-secondary-foreground/60">
-            A real Fetch API request to JSONPlaceholder. No mock data is shown before the request completes.
+            This section demonstrates asynchronous REST API integration using Fetch API and JSON response handling.
           </p>
         </div>
         <button
@@ -653,7 +782,7 @@ function Contact() {
   return (
     <section id="contact" className="scroll-mt-24 border-t border-border bg-muted/35 py-24 sm:py-32">
       <div className="section-wrap">
-        <SectionHeading number="06" eyebrow="Open channel" title="Have a thoughtful problem to work on?">
+        <SectionHeading number="08" eyebrow="Open channel" title="Have a thoughtful problem to work on?">
           <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
             The form is ready for a real conversation. Submission is kept honest: it validates locally, but does not pretend to send without a configured endpoint.
           </p>
@@ -663,25 +792,35 @@ function Contact() {
             <div>
               <p className="eyebrow">Find me here</p>
               <div className="mt-4 space-y-3">
-                <button
-                  type="button"
-                  onClick={() => unavailableAction('Email contact')}
+                <a
+                  href="mailto:nayakchethan666@gmail.com"
                   className="focus-ring flex w-full items-center justify-between rounded-lg border border-border bg-card p-4 text-left text-sm font-semibold transition-colors hover:border-primary"
-                  data-testid="button-email-placeholder"
+                  data-testid="link-email"
                 >
-                  <span className="flex items-center gap-3"><Send size={18} /> Email <span className="font-mono text-[10px] font-normal text-muted-foreground">placeholder</span></span>
-                  <ExternalLink size={15} className="text-muted-foreground" />
-                </button>
-                <a href="#contact" className="focus-ring flex items-center justify-between rounded-lg border border-border bg-card p-4 text-sm font-semibold transition-colors hover:border-primary" data-testid="link-github-placeholder">
-                  <span className="flex items-center gap-3"><Github size={18} /> GitHub <span className="font-mono text-[10px] font-normal text-muted-foreground">placeholder</span></span>
+                  <span className="flex items-center gap-3"><Send size={18} /> Email <span className="font-mono text-[10px] font-normal text-muted-foreground">nayakchethan666@gmail.com</span></span>
                   <ExternalLink size={15} className="text-muted-foreground" />
                 </a>
-                <a href="#contact" className="focus-ring flex items-center justify-between rounded-lg border border-border bg-card p-4 text-sm font-semibold transition-colors hover:border-primary" data-testid="link-linkedin-placeholder">
-                  <span className="flex items-center gap-3"><Linkedin size={18} /> LinkedIn <span className="font-mono text-[10px] font-normal text-muted-foreground">placeholder</span></span>
+                <a
+                  href="tel:+919380240899"
+                  className="focus-ring flex w-full items-center justify-between rounded-lg border border-border bg-card p-4 text-left text-sm font-semibold transition-colors hover:border-primary"
+                  data-testid="link-phone"
+                >
+                  <span className="flex items-center gap-3"><Phone size={18} /> Phone <span className="font-mono text-[10px] font-normal text-muted-foreground">+91 9380240899</span></span>
+                  <ExternalLink size={15} className="text-muted-foreground" />
+                </a>
+                <div className="flex items-center gap-3 rounded-lg border border-border bg-card p-4 text-sm font-semibold">
+                  <MapPin size={18} />
+                  <span>Location <span className="ml-2 font-mono text-[10px] font-normal text-muted-foreground">Mysore, Karnataka</span></span>
+                </div>
+                <a href="https://github.com/chethannayaka" target="_blank" rel="noreferrer" className="focus-ring flex items-center justify-between rounded-lg border border-border bg-card p-4 text-sm font-semibold transition-colors hover:border-primary" data-testid="link-github">
+                  <span className="flex items-center gap-3"><Github size={18} /> GitHub <span className="font-mono text-[10px] font-normal text-muted-foreground">chethannayaka</span></span>
+                  <ExternalLink size={15} className="text-muted-foreground" />
+                </a>
+                <a href="https://www.linkedin.com/in/chethan-nayaka-km-8407713b2" target="_blank" rel="noreferrer" className="focus-ring flex items-center justify-between rounded-lg border border-border bg-card p-4 text-sm font-semibold transition-colors hover:border-primary" data-testid="link-linkedin">
+                  <span className="flex items-center gap-3"><Linkedin size={18} /> LinkedIn <span className="font-mono text-[10px] font-normal text-muted-foreground">chethan-nayaka-km</span></span>
                   <ExternalLink size={15} className="text-muted-foreground" />
                 </a>
               </div>
-              <p className="mt-3 text-xs leading-5 text-muted-foreground">Profile URLs will be added when available.</p>
             </div>
             <div className="border-t border-border pt-7">
               <p className="eyebrow">Curriculum vitae</p>
@@ -770,11 +909,21 @@ function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="section-wrap flex flex-col gap-5 py-7 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-        <span className="font-mono">CNKM / portfolio</span>
-        <span>Built with care for the next opportunity.</span>
-        <a href="#home" className="focus-ring inline-flex items-center gap-2 font-semibold text-foreground hover:text-primary" data-testid="link-back-top">
-          Back to top <ArrowUpRight size={14} />
-        </a>
+        <span className="font-mono">© 2027 Chethan Nayaka K M</span>
+        <div className="flex flex-wrap items-center gap-4">
+          <a href="https://github.com/chethannayaka" target="_blank" rel="noreferrer" className="focus-ring font-semibold text-foreground hover:text-primary" data-testid="link-footer-github">
+            GitHub
+          </a>
+          <a href="https://www.linkedin.com/in/chethan-nayaka-km-8407713b2" target="_blank" rel="noreferrer" className="focus-ring font-semibold text-foreground hover:text-primary" data-testid="link-footer-linkedin">
+            LinkedIn
+          </a>
+          <a href="mailto:nayakchethan666@gmail.com" className="focus-ring font-semibold text-foreground hover:text-primary" data-testid="link-footer-email">
+            Email
+          </a>
+          <a href="#home" className="focus-ring inline-flex items-center gap-2 font-semibold text-foreground hover:text-primary" data-testid="link-back-top">
+            Back to top <ArrowUpRight size={14} />
+          </a>
+        </div>
       </div>
     </footer>
   );
@@ -788,13 +937,14 @@ export default function PortfolioPage() {
         <Hero />
         <About />
         <Skills />
+        <Experience />
         <Projects />
         <Achievements />
         <Education />
         <section className="section-wrap scroll-mt-24 py-16 sm:py-20" aria-labelledby="api-heading">
           <div className="mb-8 flex items-end justify-between gap-5">
             <div>
-              <p className="eyebrow">07 / Technical note</p>
+              <p className="eyebrow">07 / Live integration</p>
               <h2 id="api-heading" className="mt-3 font-display text-3xl font-semibold">Show, don&apos;t just say.</h2>
             </div>
             <Code2 className="hidden text-primary sm:block" size={28} strokeWidth={1.5} />

@@ -1,0 +1,428 @@
+Update the existing portfolio comprehensively so that its content accurately matches my current CV.
+
+IMPORTANT:
+- Do NOT rebuild the website.
+- Preserve the existing React + TypeScript + Vite architecture.
+- Preserve the current visual design and working REST API demonstration.
+- Make all content changes in one pass.
+- Do not invent information.
+- Do not exaggerate experience, project features or achievements.
+- Keep the existing responsive/mobile-first design.
+- Run TypeScript checking and Vite production build after all changes.
+
+==================================================
+1. PERSONAL INFORMATION
+==================================================
+
+Name:
+Chethan Nayaka K M
+
+Phone:
++91 9380240899
+
+Email:
+nayakchethan666@gmail.com
+
+Location:
+Mysore, Karnataka
+
+GitHub:
+https://github.com/chethannayaka
+
+LinkedIn:
+https://www.linkedin.com/in/chethan-nayaka-km-8407713b2
+
+Use the clean LinkedIn URL above without tracking parameters.
+
+Update the Hero, Contact and Footer sections with these details.
+
+==================================================
+2. HERO
+==================================================
+
+Keep the current headline:
+
+"Building practical software with AI & technology."
+
+Supporting text:
+
+"I'm Chethan Nayaka K M, a final-year B.E. Computer Science and Engineering (AI & ML) student interested in software development, AI/ML, web technologies and building practical applications."
+
+Keep:
+- View Projects
+- Download CV
+- GitHub
+- LinkedIn
+- Email
+
+==================================================
+3. ABOUT
+==================================================
+
+Create a concise professional About section based only on the following information:
+
+"Final-year B.E. Computer Science and Engineering (AI & ML) student with hands-on experience in web development, machine learning, system design and technical collaboration. Interested in building practical software solutions and applying programming, problem-solving and engineering concepts to real-world problems."
+
+Do not claim professional full-time employment.
+
+==================================================
+4. EDUCATION
+==================================================
+
+Add:
+
+The National Institute of Engineering
+Mysore, India
+
+B.E. in Computer Science and Engineering (AI & ML)
+CGPA: 6.63 / 10.00
+Expected Graduation: 2027
+
+Also include:
+
+Class XII / Pre-University Education (PUC)
+Percentage: 90.00%
+
+Present this professionally without making the section too large.
+
+==================================================
+5. TECHNICAL SKILLS
+==================================================
+
+Replace the existing skills with the following CV-aligned categories.
+
+WEB TECHNOLOGIES:
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Web APIs
+- DOM Manipulation
+- Fetch API
+- Async/Await
+- JSON
+- REST APIs
+- TypeScript
+- React
+- Vite
+
+PROGRAMMING:
+- Python
+- C
+
+CORE CS & MACHINE LEARNING:
+- Data Structures & Algorithms
+- Object-Oriented Programming (OOP)
+- NumPy
+- Pandas
+- Scikit-learn
+- Decision Trees
+- Logistic Regression
+
+TOOLS & VERSION CONTROL:
+- Git
+- GitHub
+- VS Code
+
+Do not add technologies that are not listed above.
+
+==================================================
+6. EXPERIENCE & LEADERSHIP
+==================================================
+
+Create a new professional section titled:
+
+"Experience & Leadership"
+
+Entry 1:
+
+Technical & Mentorship Intern — MTD Community
+Location/Organization:
+NIE Mysore
+
+Description:
+- Selected through a competitive skill-development program to collaborate with the core MTD team on technical initiatives.
+- Assisted in facilitating technical training sessions and workshops for engineering students across semester levels.
+
+Entry 2:
+
+Technical Volunteer & Maintainer — Smart India Hackathon (SIH)
+Location:
+College Center
+
+Description:
+- Managed technical infrastructure and network setup for participating teams during campus hackathon rounds.
+- Troubleshot real-time technical issues to ensure smooth execution of competition sessions.
+
+Do not invent dates.
+
+==================================================
+7. PROJECTS
+==================================================
+
+Create/maintain four project cards.
+
+PROJECT 1:
+Elderly Companion System
+
+Category:
+Full-Stack Architecture / System Design
+
+Description:
+"Collaborated on a team-based minor project focused on technical solutions and problem-domain analysis for elderly assistance. Contributed to system design, workflow structure and technical presentation."
+
+Achievement:
+"Top 5 Finalist — Minor Project Competition"
+
+GitHub:
+https://github.com/chethannayaka/MINOR_ELDERLY_COMPANION
+
+There is NO live demo.
+Do not invent one.
+
+Do not invent additional technical features.
+
+--------------------------------------------------
+
+PROJECT 2:
+Student Performance Prediction System
+
+Technologies:
+Python, Pandas, Scikit-learn
+
+Description:
+"Built an end-to-end machine learning classification workflow to predict student pass/fail outcomes based on attendance and academic indicators."
+
+Feature points:
+- Data cleaning
+- Missing value handling
+- Feature encoding
+- Machine learning classification
+- Student pass/fail prediction
+
+Do not invent a GitHub or Live Demo URL.
+
+--------------------------------------------------
+
+PROJECT 3:
+AI-Enabled Smart Public Distribution System
+
+Category:
+Technical Documentation & Architecture
+
+Description:
+"Authored detailed technical documentation and system specification reports for an IoT-integrated public distribution platform featuring QR-based authentication and weight verification."
+
+Keep the description factual and concise.
+
+Do not invent GitHub or Live Demo URLs.
+
+--------------------------------------------------
+
+PROJECT 4:
+Responsive Web Application Component
+
+Technologies:
+HTML5, CSS3, JavaScript, Web APIs, React, TypeScript, Vite, REST APIs
+
+Description:
+"Developing an interactive client-side web interface applying responsive design principles, DOM manipulation and asynchronous JSON fetching."
+
+Also include:
+- Reusable React components
+- REST API integration
+- Fetch API
+- JSON handling
+- Responsive design
+- Event handling
+
+IMPORTANT:
+This project is currently being built.
+Do NOT add a fake GitHub repository.
+Do NOT add a fake Live Demo.
+Keep buttons hidden/disabled until real links are available.
+
+==================================================
+8. REST API DEMONSTRATION
+==================================================
+
+KEEP the existing working REST API demonstration.
+
+It currently uses:
+
+GET
+https://jsonplaceholder.typicode.com/todos/1
+
+Keep:
+- Fetch API request
+- Loading state
+- Error state
+- HTTP response status
+- JSON parsing
+- Dynamic response display
+
+Label it:
+
+"Live REST API Demonstration"
+
+Description:
+
+"This section demonstrates asynchronous REST API integration using Fetch API and JSON response handling."
+
+Do not replace it with mock data.
+
+==================================================
+9. ACHIEVEMENTS
+==================================================
+
+Create/maintain:
+
+Top 5 Finalist — Minor Project Competition
+
+Associated project:
+Elderly Companion System
+
+Do not add other achievements.
+
+==================================================
+10. CONTACT
+==================================================
+
+Contact information:
+
+Phone:
++91 9380240899
+
+Email:
+nayakchethan666@gmail.com
+
+Location:
+Mysore, Karnataka
+
+GitHub:
+https://github.com/chethannayaka
+
+LinkedIn:
+https://www.linkedin.com/in/chethan-nayaka-km-8407713b2
+
+Make each appropriate item clickable.
+
+Email:
+mailto:nayakchethan666@gmail.com
+
+Phone:
+tel:+919380240899
+
+Keep the frontend contact form.
+
+Do not claim that the form sends emails because no backend/email service has been configured.
+
+==================================================
+11. CV DOWNLOAD
+==================================================
+
+Keep the Download CV button.
+
+There is currently no CV PDF connected to the website.
+
+Do NOT create a fake PDF.
+
+Keep it ready so the actual PDF can be connected later.
+
+==================================================
+12. NAVIGATION
+==================================================
+
+Navbar should contain:
+
+Home
+About
+Skills
+Experience
+Projects
+Achievements
+Education
+Contact
+
+Make sure all links scroll to the correct section.
+
+Use smooth scrolling.
+
+Ensure mobile navigation works.
+
+==================================================
+13. FOOTER
+==================================================
+
+Use:
+
+© 2027 Chethan Nayaka K M
+
+Include:
+- GitHub
+- LinkedIn
+- Email
+
+==================================================
+14. RESPONSIVE DESIGN
+==================================================
+
+Check the entire website on:
+
+- Mobile
+- Tablet
+- Laptop
+- Desktop
+
+Fix:
+- Horizontal overflow
+- Text clipping
+- Card sizing
+- Navigation
+- Button sizing
+- Section spacing
+- API demonstration responsiveness
+- Contact form responsiveness
+
+==================================================
+15. DESIGN
+==================================================
+
+Keep the existing professional design.
+
+Do not make it overly flashy.
+
+Avoid:
+- Fake statistics
+- Fake testimonials
+- Stock photos
+- Excessive animations
+- Invented experience
+- Invented project details
+
+Use a clean software-engineering portfolio style.
+
+==================================================
+16. FINAL VERIFICATION
+==================================================
+
+After all changes:
+
+1. Run TypeScript check.
+2. Run Vite production build.
+3. Verify REST API returns valid JSON.
+4. Verify navigation.
+5. Verify GitHub link.
+6. Verify LinkedIn link.
+7. Verify email link.
+8. Verify phone link.
+9. Verify Elderly Companion GitHub link.
+10. Verify mobile responsiveness.
+11. Verify desktop responsiveness.
+12. Check for broken links.
+13. Check that no fake URLs remain.
+14. Check that no personal information is missing where provided.
+
+At the end, provide a concise summary of:
+- Changes made
+- Verification results
+- Remaining placeholders
