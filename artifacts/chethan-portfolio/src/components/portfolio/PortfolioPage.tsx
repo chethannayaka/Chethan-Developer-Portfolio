@@ -235,14 +235,17 @@ function Hero() {
             Available for software engineering opportunities
           </div>
           <h1 className="hero-entrance-delay display-title max-w-4xl text-[clamp(3.5rem,9vw,7.65rem)] font-semibold leading-[0.86] text-foreground">
-            Practical
-            <br />
-            software,
-            <br />
-            <span className="text-primary">carefully built.</span>
+            <span className="block">Building practical</span>
+            <span className="block">
+              software with AI <span className="hidden sm:inline">&amp;</span>
+            </span>
+            <span className="block text-primary">
+              <span className="sm:hidden">&amp; </span>
+              technology.
+            </span>
           </h1>
           <p className="hero-entrance-late mt-8 max-w-xl text-base leading-7 text-muted-foreground sm:text-lg">
-            I&apos;m <strong className="font-semibold text-foreground">Chethan Nayaka K M</strong>, a final-year B.E. Computer Science and Engineering student focused on AI &amp; ML — building useful interfaces and thinking through the systems behind them.
+            I&apos;m Chethan Nayaka K M, a final-year B.E. Computer Science and Engineering (AI &amp; ML) student interested in software development, AI/ML, and building practical applications.
           </p>
           <div className="hero-entrance-late mt-9 flex flex-wrap gap-3">
             <ButtonLink href="#projects" testId="link-hero-projects">
@@ -267,6 +270,9 @@ function Hero() {
             </a>
             <a href="#contact" className="focus-ring text-foreground hover:text-primary" data-testid="link-hero-linkedin">
               LinkedIn <span className="font-mono text-[10px] font-normal text-muted-foreground">placeholder</span>
+            </a>
+            <a href="#contact" className="focus-ring text-foreground hover:text-primary" data-testid="link-hero-email">
+              Email <span className="font-mono text-[10px] font-normal text-muted-foreground">placeholder</span>
             </a>
           </div>
         </div>
