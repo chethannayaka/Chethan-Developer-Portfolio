@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Chethan Nayaka K M — Developer Portfolio"
+description = "A professional developer portfolio for Chethan Nayaka K M, a final-year Computer Science and Engineering (AI & ML) student, with project showcases, skills, education, contact UI, and a live REST API demonstration."
+version = "1.0.0"
+id = "artifacts/chethan-portfolio"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22988
+
+[services.development]
+run = "pnpm --filter @workspace/chethan-portfolio run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/chethan-portfolio", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/chethan-portfolio/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22988"
+BASE_PATH = "/"
