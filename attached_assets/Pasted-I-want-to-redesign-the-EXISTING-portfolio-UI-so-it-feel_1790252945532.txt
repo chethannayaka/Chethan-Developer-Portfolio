@@ -1,0 +1,285 @@
+I want to redesign the EXISTING portfolio UI so it feels like a REAL MULTI-PAGE PERSONAL WEBSITE / DIGITAL PORTFOLIO, NOT a long single-page resume or list.
+
+IMPORTANT:
+- Do NOT rebuild the project from scratch.
+- Preserve my existing React + TypeScript + Vite architecture.
+- Preserve all existing content, projects, experience, education, skills, achievements, links, REST API demo, and functionality.
+- Do NOT invent personal information.
+- Do NOT change Vercel configuration.
+- Do NOT modify backend/API files unnecessarily.
+- Inspect the current project before making changes.
+
+CORE DESIGN GOAL:
+
+The portfolio should feel like a website with DIFFERENT DESTINATIONS / DASHBOARDS.
+
+It should NOT feel like:
+Hero
+↓
+About
+↓
+Skills
+↓
+Experience
+↓
+Projects
+↓
+Education
+↓
+Contact
+
+Instead, create a clear website navigation system where each major area feels like its own page/dashboard.
+
+DESIRED SITE STRUCTURE:
+
+HOME
+- Strong visual landing page.
+- Large personal introduction.
+- Short summary.
+- Featured project/achievement.
+- Clear navigation to the other sections.
+- This page should NOT contain every piece of portfolio information.
+
+ABOUT
+- Dedicated About page/dashboard.
+- Personal introduction.
+- Education overview.
+- Career/experience overview.
+- A few key facts.
+- Editorial layout with large typography.
+- Make it feel like an independent page.
+
+PROJECTS
+- Dedicated Projects dashboard.
+- Show project cards/tiles rather than a vertical list.
+- Each project should feel like an individual case study.
+- Use large visual cards with:
+  - project title
+  - short description
+  - technology tags
+  - achievement/status
+  - GitHub/demo action
+- Include hover interactions.
+- Make the Elderly Companion System visually prominent because of its existing Top 5 finalist achievement.
+- Clicking a project should open a dedicated project detail view/page/modal rather than simply expanding a paragraph inside the same long page.
+
+EXPERIENCE
+- Dedicated Experience dashboard.
+- Do NOT display it like a simple resume list.
+- Create visually distinct experience panels/timeline cards.
+- Each experience should have its own area containing:
+  - organization
+  - role
+  - duration/date
+  - existing description
+  - existing responsibilities/contributions
+- Use interactive hover/click states where appropriate.
+
+SKILLS
+- Dedicated Skills dashboard.
+- Do NOT make this a giant list of technologies.
+- Organize existing skills into visually distinct categories.
+- Use interactive skill cards or panels.
+- Example categories only if supported by my existing data:
+  - Programming
+  - Frontend
+  - AI/ML
+  - Data
+  - Tools
+- Clicking/hovering a category can reveal its technologies.
+- Keep the interface clean and professional.
+
+ACHIEVEMENTS
+- Dedicated Achievements page/dashboard.
+- Make achievements feel like accomplishments rather than another list.
+- Use large numbers, visual blocks, badges, or milestone cards.
+- Keep the existing factual information only.
+- Highlight the existing Top 5 finalist achievement without exaggerating it.
+
+EDUCATION
+- Dedicated Education page/dashboard.
+- Use academic timeline/cards.
+- Make each educational stage visually distinct.
+- Do not simply put everything into a paragraph.
+
+CONTACT
+- Dedicated Contact page.
+- Large clean contact introduction.
+- Existing email/social links.
+- Existing contact form if present.
+- Make this feel like a final destination rather than another section of a resume.
+
+CV
+- Treat CV as a separate destination/action.
+- Add a clear Download CV button from the Home page and navigation.
+- If an actual CV file already exists, connect it.
+- If it doesn't exist, create only the UI placeholder and do NOT invent a PDF.
+
+NAVIGATION:
+
+Create a strong global navigation system.
+
+Desktop:
+- Logo/name on the left.
+- Navigation links such as:
+  Home
+  About
+  Projects
+  Experience
+  Skills
+  Achievements
+  Education
+  Contact
+- CV / Download CV as a highlighted action.
+- Sticky/fixed navigation.
+- Active page indicator.
+
+Mobile:
+- Hamburger menu.
+- Full-screen or clean slide-out navigation.
+- Easy navigation between pages.
+
+PAGE TRANSITIONS:
+
+The transition between destinations should feel like navigating a real website.
+
+Use:
+- smooth page transitions
+- subtle fade/slide animations
+- active navigation states
+- consistent layout structure
+
+Avoid:
+- excessive animations
+- flashy effects
+- loading screens that slow down navigation
+
+VISUAL DESIGN:
+
+The visual language should be inspired by the reference video:
+
+- Premium minimalist editorial style
+- Warm/off-white background
+- Black/dark typography
+- Restrained green accent
+- Very large display typography
+- Small uppercase metadata
+- Thin borders
+- Generous whitespace
+- Clean grids
+- Minimal shadows
+- Minimal rounded corners
+- Strong visual hierarchy
+
+BUT:
+
+Each page/dashboard must have enough visual variation that it feels like a separate destination.
+
+For example:
+
+HOME:
+Large hero + featured content
+
+PROJECTS:
+Grid/case-study dashboard
+
+EXPERIENCE:
+Timeline/experience panels
+
+SKILLS:
+Interactive category dashboard
+
+ACHIEVEMENTS:
+Large milestone/stat cards
+
+EDUCATION:
+Academic timeline
+
+CONTACT:
+Large contact-focused layout
+
+Do NOT simply repeat the exact same card design on every page.
+
+PROJECT DETAIL EXPERIENCE:
+
+When the user selects a project:
+
+Open a dedicated project detail page or elegant full-screen detail view containing:
+- Project name
+- Existing description
+- Problem/purpose if already available
+- Existing technologies
+- Existing achievement
+- Existing GitHub/demo links
+- Project visuals/screenshots if they already exist
+
+Do NOT invent technical details.
+
+RESPONSIVENESS:
+
+Desktop should feel like a real professional website.
+
+Mobile should NOT simply be a compressed desktop layout.
+
+Create intentional mobile layouts:
+- stacked content
+- appropriate typography
+- touch-friendly buttons
+- clean navigation
+- no horizontal overflow
+
+IMPORTANT UX PRINCIPLE:
+
+The website should make the visitor feel like they are EXPLORING a portfolio, not READING A RESUME.
+
+The visitor should be able to navigate:
+
+Home
+→ Projects
+→ Project Detail
+
+Home
+→ Experience
+
+Home
+→ Skills
+
+Home
+→ Achievements
+
+Home
+→ About
+
+Home
+→ Contact
+
+Each destination should have its own visual structure.
+
+TECHNICAL REQUIREMENTS:
+
+- Use React Router if the project architecture supports adding proper routes.
+- Create real routes such as:
+  /
+  /about
+  /projects
+  /projects/:projectId
+  /experience
+  /skills
+  /achievements
+  /education
+  /contact
+- Preserve the existing Vite setup.
+- Make sure direct navigation to routes works correctly in development.
+- Do not break the existing REST API demo.
+- Maintain accessibility and keyboard navigation.
+- Maintain existing GitHub, LinkedIn, email and other links.
+- Run typecheck after changes.
+- Run production build after changes.
+- Fix any errors introduced by the UI changes.
+
+VERY IMPORTANT:
+Before changing the code, inspect the existing project structure and reuse existing components/data wherever possible.
+
+Do NOT create fake content just to fill empty space.
+
+The final result should feel like a premium personal developer website with multiple distinct pages/dashboards, NOT a single-page resume.
