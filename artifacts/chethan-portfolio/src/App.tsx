@@ -1,6 +1,16 @@
 import { type ReactNode } from 'react';
 import { ErrorBoundary } from '@/components/error-boundary';
-import PortfolioPage from '@/components/portfolio/PortfolioPage';
+import {
+  AchievementsPage,
+  AboutPage,
+  ContactPage,
+  EducationPage,
+  ExperiencePage,
+  HomePage,
+  ProjectDetailPage,
+  ProjectsPage,
+  SkillsPage,
+} from '@/components/portfolio/PortfolioPage';
 import NotFound from '@/pages/not-found';
 import {
   Route,
@@ -15,7 +25,15 @@ function Router() {
     // survives a page crash.
     <RoutedErrorBoundary>
       <Switch>
-        <Route path="/" component={Home} />
+        <Route path="/" component={HomePage} />
+        <Route path="/about" component={AboutPage} />
+        <Route path="/projects/:projectId" component={ProjectDetailPage} />
+        <Route path="/projects" component={ProjectsPage} />
+        <Route path="/experience" component={ExperiencePage} />
+        <Route path="/skills" component={SkillsPage} />
+        <Route path="/achievements" component={AchievementsPage} />
+        <Route path="/education" component={EducationPage} />
+        <Route path="/contact" component={ContactPage} />
         <Route component={NotFound} />
       </Switch>
     </RoutedErrorBoundary>
@@ -33,10 +51,6 @@ function App() {
       <Router />
     </WouterRouter>
   );
-}
-
-function Home() {
-  return <PortfolioPage />;
 }
 
 export default App;

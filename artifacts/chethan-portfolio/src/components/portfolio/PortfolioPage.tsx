@@ -26,19 +26,20 @@ import {
   Trophy,
   X,
 } from 'lucide-react';
+import { Link, useLocation, useRoute } from 'wouter';
 
 type FetchState = 'idle' | 'loading' | 'success' | 'error';
 type ApiPayload = { userId: number; id: number; title: string; completed: boolean };
 
 const navItems = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Achievements', href: '#achievements' },
-  { label: 'Education', href: '#education' },
-  { label: 'Contact', href: '#contact' },
+  { label: 'Home', href: '/' },
+  { label: 'About', href: '/about' },
+  { label: 'Projects', href: '/projects' },
+  { label: 'Experience', href: '/experience' },
+  { label: 'Skills', href: '/skills' },
+  { label: 'Achievements', href: '/achievements' },
+  { label: 'Education', href: '/education' },
+  { label: 'Contact', href: '/contact' },
 ];
 
 const skillGroups = [
@@ -211,9 +212,9 @@ function ButtonLink({
       : 'focus-ring inline-flex items-center justify-center gap-2 rounded-full border border-border bg-card/60 px-5 py-3 text-sm font-semibold text-foreground transition-colors hover:border-primary hover:text-primary';
   if (href) {
     return (
-      <a href={href} className={className} data-testid={testId}>
+      <Link href={href} className={className} data-testid={testId}>
         {children}
-      </a>
+      </Link>
     );
   }
   return (
@@ -229,29 +230,38 @@ function unavailableAction(label: string) {
 
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [location] = useLocation();
+  const isActive = (href: string) => href === '/' ? location === '/' : location.startsWith(href);
   return (
     <header className="fixed inset-x-0 top-0 z-40 border-b border-border/70 bg-background/90 backdrop-blur-md">
       <div className="section-wrap flex h-[72px] items-center justify-between">
-        <a href="#home" className="focus-ring flex items-center gap-3" data-testid="link-home">
+        <Link href="/" className="focus-ring flex items-center gap-3" data-testid="link-home">
           <span className="grid h-9 w-9 place-items-center rounded-lg bg-secondary font-display text-sm font-bold text-accent">
             CN
           </span>
           <span className="hidden text-sm font-bold tracking-tight sm:block">Chethan Nayaka K M</span>
-        </a>
+        </Link>
         <nav className="hidden items-center gap-6 lg:flex" aria-label="Primary navigation">
           {navItems.map((item) => (
-            <a
+            <Link
               key={item.href}
               href={item.href}
-              className="nav-link focus-ring text-xs font-semibold text-muted-foreground hover:text-foreground"
+              className={`nav-link focus-ring text-xs font-semibold transition-colors hover:text-foreground ${isActive(item.href) ? 'text-foreground nav-link-active' : 'text-muted-foreground'}`}
               data-testid={`link-nav-${item.label.toLowerCase()}`}
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
-        <div className="hidden lg:block">
-          <ButtonLink href="#contact" variant="quiet" testId="link-header-contact">
+        <div className="hidden items-center gap-2 lg:flex">
+          <ButtonLink
+            variant="quiet"
+            testId="button-header-download-cv"
+            onClick={() => unavailableAction('Download CV')}
+          >
+            Download CV <Download size={15} />
+          </ButtonLink>
+          <ButtonLink href="/contact" variant="quiet" testId="link-header-contact">
             Let&apos;s connect <ArrowUpRight size={15} />
           </ButtonLink>
         </div>
@@ -271,17 +281,25 @@ function Header() {
         <nav id="mobile-navigation" className="border-t border-border bg-background px-5 py-4 lg:hidden" aria-label="Mobile navigation">
           <div className="section-wrap flex flex-col gap-1">
             {navItems.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={() => setMenuOpen(false)}
-                className="focus-ring flex items-center justify-between border-b border-border/70 py-3 text-sm font-semibold"
+                className={`focus-ring flex items-center justify-between border-b border-border/70 py-3 text-sm font-semibold ${isActive(item.href) ? 'text-primary' : 'text-foreground'}`}
                 data-testid={`link-mobile-${item.label.toLowerCase()}`}
               >
                 {item.label}
                 <ChevronRight size={15} className="text-primary" />
-              </a>
+              </Link>
             ))}
+            <button
+              type="button"
+              onClick={() => unavailableAction('Download CV')}
+              className="focus-ring mt-3 inline-flex items-center justify-between rounded-lg bg-secondary px-4 py-3 text-sm font-semibold text-secondary-foreground"
+              data-testid="button-mobile-download-cv"
+            >
+              Download CV <Download size={15} />
+            </button>
           </div>
         </nav>
       )}
@@ -313,7 +331,7 @@ function Hero() {
             I&apos;m Chethan Nayaka K M, a final-year B.E. Computer Science and Engineering (AI &amp; ML) student interested in software development, AI/ML, web technologies and building practical applications.
           </p>
           <div className="hero-entrance-late mt-9 flex flex-wrap gap-3">
-            <ButtonLink href="#projects" testId="link-hero-projects">
+            <ButtonLink href="/projects" testId="link-hero-projects">
               View Projects <ArrowDown size={16} />
             </ButtonLink>
             <ButtonLink
@@ -383,14 +401,16 @@ function Hero() {
   );
 }
 
-function About() {
+function About({ showHeading = true }: { showHeading?: boolean }) {
   return (
-    <section id="about" className="section-wrap scroll-mt-24 py-24 sm:py-32">
-      <SectionHeading number="01" eyebrow="The short version" title="I like the part where an idea becomes dependable.">
-        <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
-          My work sits between a thoughtful user experience and the engineering that makes it reliable.
-        </p>
-      </SectionHeading>
+    <section id="about" className={`section-wrap scroll-mt-24 ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
+      {showHeading && (
+        <SectionHeading number="01" eyebrow="The short version" title="I like the part where an idea becomes dependable.">
+          <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+            My work sits between a thoughtful user experience and the engineering that makes it reliable.
+          </p>
+        </SectionHeading>
+      )}
       <div className="grid gap-10 border-t border-border pt-10 md:grid-cols-[1.1fr_0.9fr]">
         <div className="space-y-5 text-lg leading-8 text-foreground/80">
           <p>
@@ -415,44 +435,71 @@ function About() {
   );
 }
 
-function Skills() {
+function Skills({ showHeading = true }: { showHeading?: boolean }) {
+  const [activeGroup, setActiveGroup] = useState(skillGroups[0].number);
+  const selectedGroup = skillGroups.find((group) => group.number === activeGroup) ?? skillGroups[0];
+  const SelectedIcon = selectedGroup.icon;
+
   return (
-    <section id="skills" className="scroll-mt-24 border-y border-border bg-muted/35 py-24 sm:py-32">
+    <section id="skills" className={`scroll-mt-24 border-y border-border bg-muted/35 ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
       <div className="section-wrap">
-        <SectionHeading number="02" eyebrow="Working toolkit" title="A focused toolkit, used with context.">
-          <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
-            Technologies are useful when they make the next decision clearer. These are the tools and habits I am actively building with.
-          </p>
-        </SectionHeading>
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {skillGroups.map((group) => {
-            const Icon = group.icon;
-            return (
-              <article key={group.number} className="rounded-xl border border-border bg-card p-6">
-                <div className="flex items-start justify-between">
-                  <Icon size={21} strokeWidth={1.5} className="text-primary" />
-                  <span className="font-mono text-xs text-muted-foreground">{group.number}</span>
-                </div>
-                <h3 className="mt-12 font-display text-xl font-semibold">{group.title}</h3>
-                <p className="mt-2 text-xs leading-5 text-muted-foreground">{group.note}</p>
-                <ul className="mt-6 space-y-2 border-t border-border pt-4">
-                  {group.skills.map((skill) => (
-                    <li key={skill} className="flex items-center gap-2 text-sm">
-                      <span className="h-1.5 w-1.5 rounded-full bg-accent" />
-                      {skill}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-            );
-          })}
+        {showHeading && (
+          <SectionHeading number="02" eyebrow="Working toolkit" title="A focused toolkit, used with context.">
+            <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+              Technologies are useful when they make the next decision clearer. These are the tools and habits I am actively building with.
+            </p>
+          </SectionHeading>
+        )}
+        <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
+            {skillGroups.map((group) => {
+              const Icon = group.icon;
+              const isSelected = group.number === selectedGroup.number;
+              return (
+                <button
+                  key={group.number}
+                  type="button"
+                  onClick={() => setActiveGroup(group.number)}
+                  className={`focus-ring flex items-center gap-4 rounded-xl border p-5 text-left transition-colors ${isSelected ? 'border-primary bg-card' : 'border-border bg-card/45 hover:border-primary/60'}`}
+                  aria-pressed={isSelected}
+                  data-testid={`button-skill-group-${group.number}`}
+                >
+                  <Icon size={21} strokeWidth={1.5} className={isSelected ? 'text-primary' : 'text-muted-foreground'} />
+                  <span className="min-w-0 flex-1">
+                    <span className="flex items-center justify-between gap-3">
+                      <span className="font-display text-lg font-semibold">{group.title}</span>
+                      <span className="font-mono text-xs text-muted-foreground">{group.number}</span>
+                    </span>
+                    <span className="mt-1 block text-xs leading-5 text-muted-foreground">{group.note}</span>
+                  </span>
+                </button>
+              );
+            })}
+          </div>
+          <div className="rounded-2xl border border-border bg-secondary p-7 text-secondary-foreground sm:p-9">
+            <div className="flex items-start justify-between gap-5">
+              <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent/15 text-accent">
+                <SelectedIcon size={24} strokeWidth={1.5} />
+              </div>
+              <span className="font-mono text-xs text-secondary-foreground/55">{selectedGroup.number} / {skillGroups.length.toString().padStart(2, '0')}</span>
+            </div>
+            <h3 className="mt-16 font-display text-3xl font-semibold">{selectedGroup.title}</h3>
+            <p className="mt-3 max-w-lg text-sm leading-7 text-secondary-foreground/65">{selectedGroup.note}</p>
+            <div className="mt-8 flex flex-wrap gap-2 border-t border-secondary-foreground/15 pt-6">
+              {selectedGroup.skills.map((skill) => (
+                <span key={skill} className="rounded-full border border-secondary-foreground/20 px-3 py-2 font-mono text-[10px] text-secondary-foreground/80">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
 
-function Experience() {
+function Experience({ showHeading = true }: { showHeading?: boolean }) {
   const experiences = [
     {
       number: '01',
@@ -477,13 +524,15 @@ function Experience() {
   ];
 
   return (
-    <section id="experience" className="scroll-mt-24 border-b border-border py-24 sm:py-32">
+    <section id="experience" className={`scroll-mt-24 border-b border-border ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
       <div className="section-wrap">
-        <SectionHeading number="03" eyebrow="Experience & leadership" title="Technical work with people at the center.">
-          <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
-            Experience shaped by technical collaboration, mentorship and keeping shared systems working when they matter.
-          </p>
-        </SectionHeading>
+        {showHeading && (
+          <SectionHeading number="03" eyebrow="Experience & leadership" title="Technical work with people at the center.">
+            <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+              Experience shaped by technical collaboration, mentorship and keeping shared systems working when they matter.
+            </p>
+          </SectionHeading>
+        )}
         <div className="grid gap-4 lg:grid-cols-2">
           {experiences.map((experience) => {
             const Icon = experience.icon;
@@ -497,6 +546,7 @@ function Experience() {
                 </div>
                 <h3 className="mt-10 font-display text-2xl font-semibold leading-tight">{experience.title}</h3>
                 <p className="mt-3 text-sm font-semibold text-primary">{experience.organization}</p>
+                <p className="mt-2 font-mono text-[10px] uppercase tracking-[0.12em] text-muted-foreground">Duration / date not provided</p>
                 <ul className="mt-7 space-y-4 border-t border-border pt-6">
                   {experience.description.map((item) => (
                     <li key={item} className="flex items-start gap-3 text-sm leading-7 text-muted-foreground">
@@ -514,18 +564,21 @@ function Experience() {
   );
 }
 
-function Projects() {
+function Projects({ showHeading = true }: { showHeading?: boolean }) {
   return (
-    <section id="projects" className="section-wrap scroll-mt-24 py-24 sm:py-32">
-      <SectionHeading number="04" eyebrow="Selected work" title="Projects that stay close to the real problem.">
-        <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
-          A current set of practical software, machine learning, documentation and interface work.
-        </p>
-      </SectionHeading>
-      <div className="space-y-4">
+    <section id="projects" className={`section-wrap scroll-mt-24 ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
+      {showHeading && (
+        <SectionHeading number="04" eyebrow="Selected work" title="Projects that stay close to the real problem.">
+          <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+            A current set of practical software, machine learning, documentation and interface work.
+          </p>
+        </SectionHeading>
+      )}
+      <div className="grid gap-4 md:grid-cols-2">
         {projectData.map((project) => (
-          <article key={project.index} className="project-card group rounded-2xl border border-border bg-card p-6 sm:p-8">
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
+          <article key={project.index} className={`project-card group rounded-2xl border border-border bg-card p-6 sm:p-8 ${project.index === '01' ? 'md:col-span-2' : ''}`}>
+            <Link href={`/projects/${project.index}`} className="focus-ring -m-2 block rounded-xl p-2">
+              <div className="flex flex-col gap-6 lg:flex-row lg:items-start lg:justify-between">
               <div className="flex items-start gap-5">
                 <span className={`font-display text-5xl font-semibold leading-none ${project.accent === 'gold' ? 'text-accent' : 'text-primary'}`}>
                   {project.index}
@@ -536,7 +589,8 @@ function Projects() {
                 </div>
               </div>
               <ArrowUpRight size={20} className="hidden text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1 sm:block" />
-            </div>
+              </div>
+            </Link>
             <div className={`mt-8 grid gap-8 border-t border-border pt-7 ${project.features.length > 0 ? 'lg:grid-cols-[1.1fr_0.9fr]' : ''}`}>
               <div>
                 <p className="text-sm leading-7 text-muted-foreground">{project.description}</p>
@@ -606,9 +660,9 @@ function Projects() {
   );
 }
 
-function Achievements() {
+function Achievements({ showHeading = true }: { showHeading?: boolean }) {
   return (
-    <section id="achievements" className="scroll-mt-24 bg-secondary py-24 text-secondary-foreground sm:py-32">
+    <section id="achievements" className={`scroll-mt-24 bg-secondary text-secondary-foreground ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
       <div className="section-wrap">
         <div className="mb-12 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-secondary-foreground/55">
           <Trophy size={16} className="text-accent" />
@@ -638,10 +692,10 @@ function Achievements() {
   );
 }
 
-function Education() {
+function Education({ showHeading = true }: { showHeading?: boolean }) {
   return (
-    <section id="education" className="section-wrap scroll-mt-24 py-24 sm:py-32">
-      <SectionHeading number="06" eyebrow="Where I am learning" title="A computer science foundation with an AI & ML direction." />
+    <section id="education" className={`section-wrap scroll-mt-24 ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
+      {showHeading && <SectionHeading number="06" eyebrow="Where I am learning" title="A computer science foundation with an AI & ML direction." />}
       <div className="grid gap-4 md:grid-cols-[1fr_0.42fr]">
         <div className="rounded-2xl border border-border bg-card p-7 sm:p-9">
           <div className="flex items-start justify-between gap-6">
@@ -757,7 +811,7 @@ function ApiDemo() {
   );
 }
 
-function Contact() {
+function Contact({ showHeading = true }: { showHeading?: boolean }) {
   const [formValues, setFormValues] = useState({ name: '', email: '', message: '' });
   const [formErrors, setFormErrors] = useState<Record<string, string>>({});
   const [submitted, setSubmitted] = useState(false);
@@ -780,13 +834,15 @@ function Contact() {
   };
 
   return (
-    <section id="contact" className="scroll-mt-24 border-t border-border bg-muted/35 py-24 sm:py-32">
+    <section id="contact" className={`scroll-mt-24 border-t border-border bg-muted/35 ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
       <div className="section-wrap">
-        <SectionHeading number="08" eyebrow="Open channel" title="Have a thoughtful problem to work on?">
-          <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
-            The form is ready for a real conversation. Submission is kept honest: it validates locally, but does not pretend to send without a configured endpoint.
-          </p>
-        </SectionHeading>
+        {showHeading && (
+          <SectionHeading number="08" eyebrow="Open channel" title="Have a thoughtful problem to work on?">
+            <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+              The form is ready for a real conversation. Submission is kept honest: it validates locally, but does not pretend to send without a configured endpoint.
+            </p>
+          </SectionHeading>
+        )}
         <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr]">
           <div className="space-y-8">
             <div>
@@ -920,40 +976,314 @@ function Footer() {
           <a href="mailto:nayakchethan666@gmail.com" className="focus-ring font-semibold text-foreground hover:text-primary" data-testid="link-footer-email">
             Email
           </a>
-          <a href="#home" className="focus-ring inline-flex items-center gap-2 font-semibold text-foreground hover:text-primary" data-testid="link-back-top">
+          <Link href="/" className="focus-ring inline-flex items-center gap-2 font-semibold text-foreground hover:text-primary" data-testid="link-back-top">
             Back to top <ArrowUpRight size={14} />
-          </a>
+          </Link>
         </div>
       </div>
     </footer>
   );
 }
 
-export default function PortfolioPage() {
+function PortfolioLayout({ children }: { children: ReactNode }) {
+  const [location] = useLocation();
   return (
     <div className="portfolio-shell min-h-[100dvh]">
       <Header />
+      <div key={location} className="route-enter">{children}</div>
+      <Footer />
+    </div>
+  );
+}
+
+function PageIntro({
+  number,
+  eyebrow,
+  title,
+  description,
+}: {
+  number: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+}) {
+  return (
+    <section className="relative overflow-hidden border-b border-border pt-[72px]">
+      <div className="portfolio-grid pointer-events-none absolute inset-0 opacity-45" />
+      <div className="section-wrap relative py-20 sm:py-28">
+        <p className="eyebrow flex items-center gap-3">
+          <span className="text-[0.62rem] text-muted-foreground">{number}</span>
+          <span className="h-px w-8 bg-primary" />
+          {eyebrow}
+        </p>
+        <h1 className="display-title mt-7 max-w-4xl text-5xl font-semibold leading-[0.92] sm:text-7xl">{title}</h1>
+        <p className="mt-7 max-w-2xl text-base leading-7 text-muted-foreground sm:text-lg">{description}</p>
+      </div>
+    </section>
+  );
+}
+
+function FeaturedProject() {
+  const project = projectData[0];
+  return (
+    <article className="project-card rounded-2xl border border-border bg-secondary p-6 text-secondary-foreground sm:p-9">
+      <div className="grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:items-end">
+        <div>
+          <p className="eyebrow text-accent">01 / Featured project</p>
+          <p className="mt-12 font-display text-[clamp(7rem,18vw,13rem)] font-semibold leading-[0.72] tracking-[-0.1em] text-accent">Top 5</p>
+        </div>
+        <div>
+          <p className="font-mono text-xs uppercase tracking-[0.14em] text-secondary-foreground/55">{project.category}</p>
+          <h2 className="mt-4 font-display text-4xl font-semibold leading-tight sm:text-6xl">{project.title}</h2>
+          <p className="mt-6 max-w-xl text-sm leading-7 text-secondary-foreground/70">{project.description}</p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <Link href="/projects/01" className="focus-ring inline-flex items-center gap-2 rounded-full bg-accent px-4 py-2.5 text-xs font-bold text-accent-foreground">
+              View project <ArrowUpRight size={14} />
+            </Link>
+            {project.github && (
+              <a href={project.github} target="_blank" rel="noreferrer" className="focus-ring inline-flex items-center gap-2 rounded-full border border-secondary-foreground/20 px-4 py-2.5 text-xs font-bold text-secondary-foreground">
+                GitHub <Github size={14} />
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+    </article>
+  );
+}
+
+function DestinationCard({
+  number,
+  title,
+  description,
+  href,
+}: {
+  number: string;
+  title: string;
+  description: string;
+  href: string;
+}) {
+  return (
+    <Link href={href} className="destination-card focus-ring group rounded-2xl border border-border bg-card p-6 transition-colors hover:border-primary sm:p-7">
+      <div className="flex items-start justify-between gap-5">
+        <span className="font-mono text-xs text-primary">{number}</span>
+        <ArrowUpRight size={19} className="text-muted-foreground transition-transform group-hover:-translate-y-1 group-hover:translate-x-1" />
+      </div>
+      <h3 className="mt-14 font-display text-2xl font-semibold">{title}</h3>
+      <p className="mt-3 text-sm leading-6 text-muted-foreground">{description}</p>
+    </Link>
+  );
+}
+
+export function HomePage() {
+  return (
+    <PortfolioLayout>
       <main>
         <Hero />
-        <About />
-        <Skills />
-        <Experience />
-        <Projects />
-        <Achievements />
-        <Education />
-        <section className="section-wrap scroll-mt-24 py-16 sm:py-20" aria-labelledby="api-heading">
+        <section className="section-wrap py-20 sm:py-28">
+          <SectionHeading number="01" eyebrow="Featured work" title="Start with the project that earned a checkpoint.">
+            <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+              A quick entry point into the work, then the rest of the portfolio is yours to explore.
+            </p>
+          </SectionHeading>
+          <FeaturedProject />
+        </section>
+        <section className="border-y border-border bg-muted/35 py-20 sm:py-28">
+          <div className="section-wrap">
+            <SectionHeading number="02" eyebrow="Explore the portfolio" title="Different work, different destinations.">
+              <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+                Move through focused pages instead of reading one long resume.
+              </p>
+            </SectionHeading>
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              <DestinationCard number="01" title="About" description="The person, education and working context behind the projects." href="/about" />
+              <DestinationCard number="02" title="Projects" description="Case-study views for software, machine learning and documentation work." href="/projects" />
+              <DestinationCard number="03" title="Experience" description="Technical collaboration, mentorship and event support." href="/experience" />
+              <DestinationCard number="04" title="Skills" description="An interactive look at the current toolkit and foundations." href="/skills" />
+              <DestinationCard number="05" title="Achievements" description="The factual milestones that mark the work." href="/achievements" />
+              <DestinationCard number="06" title="Contact" description="A clear final destination for a conversation." href="/contact" />
+            </div>
+          </div>
+        </section>
+      </main>
+    </PortfolioLayout>
+  );
+}
+
+export function AboutPage() {
+  return (
+    <PortfolioLayout>
+      <main>
+        <PageIntro number="01" eyebrow="About" title="A computer science foundation pointed toward useful software." description="A dedicated view of the person, education and experience behind the portfolio." />
+        <About showHeading={false} />
+        <section className="section-wrap pb-24 sm:pb-32">
+          <div className="grid gap-4 md:grid-cols-2">
+            <DestinationCard number="→" title="Education overview" description="The National Institute of Engineering, current degree and PUC background." href="/education" />
+            <DestinationCard number="→" title="Experience overview" description="Technical mentorship and Smart India Hackathon contributions." href="/experience" />
+          </div>
+        </section>
+      </main>
+    </PortfolioLayout>
+  );
+}
+
+export function ProjectsPage() {
+  return (
+    <PortfolioLayout>
+      <main>
+        <PageIntro number="02" eyebrow="Projects" title="Case studies, not a project dump." description="Explore each piece of work as its own destination, with only the supplied descriptions, technologies and links." />
+        <Projects showHeading={false} />
+        <section className="section-wrap pb-24 sm:pb-32" aria-labelledby="api-heading">
           <div className="mb-8 flex items-end justify-between gap-5">
             <div>
-              <p className="eyebrow">07 / Live integration</p>
+              <p className="eyebrow">05 / Live integration</p>
               <h2 id="api-heading" className="mt-3 font-display text-3xl font-semibold">Show, don&apos;t just say.</h2>
             </div>
             <Code2 className="hidden text-primary sm:block" size={28} strokeWidth={1.5} />
           </div>
           <ApiDemo />
         </section>
-        <Contact />
       </main>
-      <Footer />
-    </div>
+    </PortfolioLayout>
   );
 }
+
+export function ExperiencePage() {
+  return (
+    <PortfolioLayout>
+      <main>
+        <PageIntro number="03" eyebrow="Experience & leadership" title="Technical work with people at the center." description="Panels for the mentorship, technical collaboration and event support already present in the portfolio." />
+        <Experience showHeading={false} />
+      </main>
+    </PortfolioLayout>
+  );
+}
+
+export function SkillsPage() {
+  return (
+    <PortfolioLayout>
+      <main>
+        <PageIntro number="04" eyebrow="Skills" title="A focused toolkit, used with context." description="Select a category to reveal the technologies and foundations currently represented in the portfolio." />
+        <Skills showHeading={false} />
+      </main>
+    </PortfolioLayout>
+  );
+}
+
+export function AchievementsPage() {
+  return (
+    <PortfolioLayout>
+      <main>
+        <PageIntro number="05" eyebrow="Achievements" title="A factual milestone, given room to register." description="One achievement, presented as a milestone rather than another resume bullet." />
+        <Achievements showHeading={false} />
+      </main>
+    </PortfolioLayout>
+  );
+}
+
+export function EducationPage() {
+  return (
+    <PortfolioLayout>
+      <main>
+        <PageIntro number="06" eyebrow="Education" title="The academic path behind the work." description="A compact academic view with distinct cards for the current degree and earlier education." />
+        <Education showHeading={false} />
+      </main>
+    </PortfolioLayout>
+  );
+}
+
+export function ContactPage() {
+  return (
+    <PortfolioLayout>
+      <main>
+        <PageIntro number="07" eyebrow="Contact" title="A good place to start a real conversation." description="Reach out through the verified links below, or prepare a message using the existing locally validated form." />
+        <Contact showHeading={false} />
+      </main>
+    </PortfolioLayout>
+  );
+}
+
+export function ProjectDetailPage() {
+  const [, params] = useRoute('/projects/:projectId');
+  const project = projectData.find((item) => item.index === params?.projectId);
+
+  if (!project) {
+    return (
+      <PortfolioLayout>
+        <main className="section-wrap min-h-[70vh] pt-40 pb-24">
+          <p className="eyebrow">Project not found</p>
+          <h1 className="display-title mt-5 text-5xl font-semibold">That project destination does not exist.</h1>
+          <Link href="/projects" className="focus-ring mt-8 inline-flex items-center gap-2 text-sm font-semibold text-primary hover:underline">
+            Back to projects <ArrowUpRight size={15} />
+          </Link>
+        </main>
+      </PortfolioLayout>
+    );
+  }
+
+  return (
+    <PortfolioLayout>
+      <main>
+        <section className="relative overflow-hidden border-b border-border pt-[72px]">
+          <div className="portfolio-grid pointer-events-none absolute inset-0 opacity-45" />
+          <div className="section-wrap relative py-20 sm:py-28">
+            <Link href="/projects" className="focus-ring inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.14em] text-primary hover:underline">
+              <ChevronRight size={14} className="rotate-180" /> Back to projects
+            </Link>
+            <p className="eyebrow mt-16">{project.index} / {project.category}</p>
+            <h1 className="display-title mt-5 max-w-5xl text-5xl font-semibold leading-[0.92] sm:text-8xl">{project.title}</h1>
+            <p className="mt-8 max-w-3xl text-lg leading-8 text-muted-foreground">{project.description}</p>
+          </div>
+        </section>
+        <section className="section-wrap py-20 sm:py-28">
+          <div className="grid gap-10 lg:grid-cols-[1.15fr_0.85fr]">
+            <div>
+              {project.features.length > 0 && (
+                <>
+                  <p className="eyebrow">Project details</p>
+                  <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+                    {project.features.map((feature) => (
+                      <li key={feature} className="rounded-xl border border-border bg-card p-5 text-sm leading-6">
+                        <span className="mb-5 block h-1.5 w-1.5 rounded-full bg-primary" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </>
+              )}
+              {project.achievement && (
+                <div className="mt-10 rounded-2xl border border-accent/35 bg-accent/10 p-6">
+                  <p className="eyebrow text-foreground">Achievement</p>
+                  <p className="mt-4 font-display text-2xl font-semibold">{project.achievement}</p>
+                </div>
+              )}
+            </div>
+            <aside className="h-fit rounded-2xl border border-border bg-muted/35 p-7 sm:p-9">
+              <p className="eyebrow">Technologies</p>
+              {project.stack.length > 0 ? (
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {project.stack.map((item) => (
+                    <span key={item} className="rounded-full border border-border bg-card px-3 py-2 font-mono text-[10px] text-muted-foreground">{item}</span>
+                  ))}
+                </div>
+              ) : (
+                <p className="mt-5 text-sm leading-7 text-muted-foreground">No technology list was provided for this project.</p>
+              )}
+              {(project.github || project.liveDemo) && (
+                <div className="mt-8 border-t border-border pt-6">
+                  <p className="eyebrow">Links</p>
+                  <div className="mt-4 flex flex-wrap gap-2">
+                    {project.github && <a href={project.github} target="_blank" rel="noreferrer" className="focus-ring inline-flex items-center gap-2 rounded-full bg-secondary px-4 py-2.5 text-xs font-semibold text-secondary-foreground"><Github size={14} /> GitHub</a>}
+                    {project.liveDemo && <a href={project.liveDemo} target="_blank" rel="noreferrer" className="focus-ring inline-flex items-center gap-2 rounded-full border border-border px-4 py-2.5 text-xs font-semibold"><ExternalLink size={14} /> Live Demo</a>}
+                  </div>
+                </div>
+              )}
+            </aside>
+          </div>
+        </section>
+      </main>
+    </PortfolioLayout>
+  );
+}
+
+export default HomePage;

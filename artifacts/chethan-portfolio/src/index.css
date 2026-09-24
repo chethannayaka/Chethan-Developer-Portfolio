@@ -144,10 +144,15 @@
 .hero-entrance-delay { animation: rise-in 700ms 120ms cubic-bezier(.2,.8,.2,1) both; }
 .hero-entrance-late { animation: rise-in 700ms 240ms cubic-bezier(.2,.8,.2,1) both; }
 @keyframes rise-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+.route-enter { animation: route-enter 420ms cubic-bezier(.2,.8,.2,1) both; }
+@keyframes route-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 .project-card { transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease; }
 .project-card:hover { transform: translateY(-4px); border-color: hsl(var(--primary)); background-color: hsl(42 38% 99%); }
 .dark .project-card:hover { background-color: hsl(222 28% 22%); }
+.destination-card { transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease; }
+.destination-card:hover { transform: translateY(-4px); background-color: hsl(42 38% 99%); }
+.dark .destination-card:hover { background-color: hsl(222 28% 22%); }
 
 .code-window { box-shadow: 10px 12px 0 rgba(34, 39, 52, 0.08); }
 .status-dot { width: 7px; height: 7px; border-radius: 999px; background: hsl(var(--primary)); box-shadow: 0 0 0 4px rgba(38, 139, 113, 0.14); }
@@ -156,7 +161,7 @@
 
 .nav-link { position: relative; transition: color 180ms ease; }
 .nav-link::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: hsl(var(--accent)); transition: right 180ms ease; }
-.nav-link:hover::after, .nav-link:focus-visible::after { right: 0; }
+.nav-link:hover::after, .nav-link:focus-visible::after, .nav-link-active::after { right: 0; }
 
 .form-field {
   width: 100%; border: 1px solid hsl(var(--border)); background: hsl(var(--card));
@@ -170,4 +175,13 @@
 @media (max-width: 767px) {
   .section-wrap { width: min(100% - 32px, 1160px); }
   .portfolio-grid { background-size: 24px 24px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
