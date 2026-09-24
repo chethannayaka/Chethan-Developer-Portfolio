@@ -33,24 +33,24 @@
 }
 
 :root {
-  --background: 42 38% 94%;
-  --foreground: 222 31% 16%;
-  --border: 39 18% 82%;
-  --input: 39 18% 78%;
-  --ring: 167 63% 36%;
-  --card: 42 38% 97%;
-  --card-foreground: 222 31% 16%;
-  --card-border: 39 18% 82%;
-  --primary: 167 63% 31%;
-  --primary-foreground: 42 38% 97%;
-  --secondary: 222 31% 16%;
-  --secondary-foreground: 42 38% 96%;
-  --muted: 40 22% 88%;
-  --muted-foreground: 222 13% 43%;
-  --accent: 37 83% 62%;
-  --accent-foreground: 222 31% 16%;
-  --destructive: 5 63% 46%;
-  --destructive-foreground: 42 38% 97%;
+  --background: 180 6% 4%;
+  --foreground: 48 14% 91%;
+  --border: 180 8% 18%;
+  --input: 180 8% 22%;
+  --ring: 156 49% 45%;
+  --card: 180 7% 8%;
+  --card-foreground: 48 14% 91%;
+  --card-border: 180 8% 18%;
+  --primary: 156 49% 45%;
+  --primary-foreground: 180 6% 4%;
+  --secondary: 180 8% 10%;
+  --secondary-foreground: 48 14% 91%;
+  --muted: 180 7% 11%;
+  --muted-foreground: 180 5% 60%;
+  --accent: 156 49% 45%;
+  --accent-foreground: 180 6% 4%;
+  --destructive: 5 63% 50%;
+  --destructive-foreground: 48 14% 91%;
   --app-font-sans: 'Manrope', sans-serif;
   --app-font-display: 'Space Grotesk', sans-serif;
   --app-font-mono: 'DM Mono', monospace;
@@ -122,16 +122,22 @@
 
 .portfolio-shell {
   background:
-    radial-gradient(circle at 78% 4%, rgba(238, 183, 77, 0.14), transparent 24rem),
-    radial-gradient(circle at 6% 35%, rgba(38, 139, 113, 0.08), transparent 20rem),
+    radial-gradient(circle at 78% 3%, rgba(46, 133, 100, 0.1), transparent 30rem),
+    radial-gradient(circle at 7% 40%, rgba(36, 77, 65, 0.14), transparent 24rem),
     hsl(var(--background));
+  color-scheme: dark;
 }
 
 .portfolio-grid {
-  background-image: linear-gradient(rgba(34, 39, 52, 0.055) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 39, 52, 0.055) 1px, transparent 1px);
+  background-image: linear-gradient(rgba(237, 237, 232, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(237, 237, 232, 0.035) 1px, transparent 1px);
   background-size: 32px 32px;
   mask-image: linear-gradient(to bottom, black, transparent 78%);
+}
+.page-intro {
+  background:
+    radial-gradient(ellipse at 78% 55%, rgba(68, 153, 113, 0.12), transparent 34%),
+    radial-gradient(ellipse at 50% 120%, rgba(237, 237, 232, 0.035), transparent 45%);
 }
 
 .section-wrap { width: min(1160px, calc(100% - 40px)); margin-inline: auto; }
@@ -148,11 +154,120 @@
 @keyframes route-enter { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 .project-card { transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease; }
-.project-card:hover { transform: translateY(-4px); border-color: hsl(var(--primary)); background-color: hsl(42 38% 99%); }
-.dark .project-card:hover { background-color: hsl(222 28% 22%); }
+.project-card:hover { transform: translateY(-4px); border-color: hsl(var(--primary)); background-color: hsl(180 8% 11%); }
+.dark .project-card:hover { background-color: hsl(180 8% 11%); }
 .destination-card { transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease; }
-.destination-card:hover { transform: translateY(-4px); background-color: hsl(42 38% 99%); }
-.dark .destination-card:hover { background-color: hsl(222 28% 22%); }
+.destination-card:hover { transform: translateY(-4px); background-color: hsl(180 8% 11%); }
+.dark .destination-card:hover { background-color: hsl(180 8% 11%); }
+
+.profile-observatory { min-height: 28rem; }
+.profile-orbits {
+  opacity: 0.75;
+  background:
+    radial-gradient(ellipse at 86% 22%, transparent 0 17%, rgba(97, 192, 145, 0.16) 17.1% 17.3%, transparent 17.4% 29%, rgba(237, 237, 232, 0.08) 29.1% 29.25%, transparent 29.35%),
+    radial-gradient(ellipse at 86% 22%, transparent 0 37%, rgba(237, 237, 232, 0.06) 37.1% 37.25%, transparent 37.35%);
+}
+.profile-orbit-panel { position: relative; overflow: hidden; }
+.profile-orbit-panel::after {
+  content: '';
+  position: absolute;
+  inset: 12%;
+  border: 1px solid rgba(97, 192, 145, 0.12);
+  border-radius: 50%;
+  transform: rotate(-25deg) scaleY(0.35);
+  pointer-events: none;
+}
+.profile-orbit-panel .black-hole-visual { margin-inline: auto; }
+
+.project-orbit-grid { position: relative; }
+.project-orbit-grid::before {
+  content: '';
+  position: absolute;
+  inset: 3% 13%;
+  border: 1px solid rgba(97, 192, 145, 0.08);
+  border-radius: 50%;
+  transform: rotate(-9deg) scaleY(0.48);
+  pointer-events: none;
+}
+.project-card { position: relative; overflow: hidden; }
+.project-card::after {
+  content: '';
+  position: absolute;
+  width: 8rem;
+  height: 8rem;
+  right: -4rem;
+  bottom: -4rem;
+  border: 1px solid rgba(97, 192, 145, 0.11);
+  border-radius: 50%;
+  transition: transform 280ms ease, border-color 280ms ease;
+  pointer-events: none;
+}
+.project-card:hover::after { transform: scale(1.4); border-color: rgba(97, 192, 145, 0.28); }
+
+.experience-timeline { position: relative; }
+.timeline-card { transition: transform 220ms ease, border-color 220ms ease, background-color 220ms ease; }
+.timeline-card::before {
+  content: '';
+  position: absolute;
+  left: -5px;
+  top: 2rem;
+  width: 9px;
+  height: 9px;
+  border: 2px solid hsl(var(--background));
+  border-radius: 50%;
+  background: hsl(var(--primary));
+  box-shadow: 0 0 0 4px rgba(70, 161, 117, 0.13);
+}
+.timeline-card:hover { transform: translateY(-4px); border-color: hsl(var(--primary)); }
+
+.constellation-panel { position: relative; overflow: hidden; }
+.constellation-panel::before,
+.constellation-panel::after {
+  content: '';
+  position: absolute;
+  width: 22rem;
+  height: 11rem;
+  left: 50%;
+  top: 41%;
+  border: 1px solid rgba(97, 192, 145, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-14deg);
+  pointer-events: none;
+}
+.constellation-panel::after { transform: translate(-50%, -50%) rotate(24deg) scaleY(0.6); border-color: rgba(237, 237, 232, 0.1); }
+.constellation-panel > * { position: relative; z-index: 1; }
+.constellation-node { transition: transform 180ms ease, border-color 180ms ease, color 180ms ease, background-color 180ms ease; }
+.constellation-node:hover { transform: translateY(-2px); border-color: hsl(var(--primary)); color: hsl(var(--secondary-foreground)); background: rgba(97, 192, 145, 0.08); }
+
+.mission-record { position: relative; overflow: hidden; }
+.mission-record::before {
+  content: '';
+  position: absolute;
+  width: 42rem;
+  height: 19rem;
+  right: -8rem;
+  top: 8rem;
+  border: 1px solid rgba(97, 192, 145, 0.15);
+  border-radius: 50%;
+  transform: rotate(-15deg) scaleY(0.42);
+  pointer-events: none;
+}
+.mission-record > * { position: relative; z-index: 1; }
+
+.education-observatory > div { position: relative; overflow: hidden; }
+.education-observatory > div::after {
+  content: '';
+  position: absolute;
+  width: 18rem;
+  height: 8rem;
+  right: -4rem;
+  top: 4rem;
+  border: 1px solid rgba(97, 192, 145, 0.12);
+  border-radius: 50%;
+  transform: rotate(-22deg) scaleY(0.4);
+  pointer-events: none;
+}
+.communication-console { background: radial-gradient(circle at 86% 18%, rgba(50, 126, 91, 0.12), transparent 26rem), hsl(var(--muted) / 0.35); }
 
 .code-window { box-shadow: 10px 12px 0 rgba(34, 39, 52, 0.08); }
 .status-dot { width: 7px; height: 7px; border-radius: 999px; background: hsl(var(--primary)); box-shadow: 0 0 0 4px rgba(38, 139, 113, 0.14); }
@@ -162,6 +277,87 @@
 .nav-link { position: relative; transition: color 180ms ease; }
 .nav-link::after { content: ''; position: absolute; left: 0; right: 100%; bottom: -7px; height: 2px; background: hsl(var(--accent)); transition: right 180ms ease; }
 .nav-link:hover::after, .nav-link:focus-visible::after, .nav-link-active::after { right: 0; }
+
+.black-hole-visual {
+  position: relative;
+  width: min(100%, 32rem);
+  aspect-ratio: 1;
+  isolation: isolate;
+  overflow: hidden;
+  border-radius: 999px;
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 0 24%, rgba(76, 169, 122, 0.11) 24.5% 25.5%, transparent 26%),
+    radial-gradient(circle at 50% 50%, rgba(1, 3, 3, 0.98) 0 18%, transparent 19%),
+    radial-gradient(circle at 50% 50%, rgba(26, 91, 69, 0.2), transparent 45%),
+    radial-gradient(circle at 50% 50%, rgba(18, 28, 26, 0.88), transparent 70%);
+  box-shadow: 0 0 0 1px rgba(97, 192, 145, 0.08), 0 0 90px rgba(44, 116, 83, 0.13);
+}
+.black-hole-visual::before,
+.black-hole-visual::after {
+  content: '';
+  position: absolute;
+  inset: 9%;
+  border: 1px solid rgba(237, 237, 232, 0.13);
+  border-radius: 50%;
+  transform: rotate(-24deg) scaleY(0.36);
+}
+.black-hole-visual::after {
+  inset: 16%;
+  border-color: rgba(97, 192, 145, 0.24);
+  transform: rotate(28deg) scaleY(0.26);
+}
+.black-hole-stars {
+  position: absolute;
+  inset: 0;
+  opacity: 0.7;
+  background-image:
+    radial-gradient(circle at 16% 28%, rgba(237, 237, 232, 0.9) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 78% 21%, rgba(237, 237, 232, 0.65) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 73% 76%, rgba(97, 192, 145, 0.8) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 27% 73%, rgba(237, 237, 232, 0.55) 0 1px, transparent 1.5px),
+    radial-gradient(circle at 58% 12%, rgba(237, 237, 232, 0.55) 0 1px, transparent 1.5px);
+}
+.black-hole-disk {
+  position: absolute;
+  inset: 25% 8%;
+  border: 2px solid rgba(97, 192, 145, 0.58);
+  border-radius: 50%;
+  box-shadow:
+    0 0 24px rgba(70, 161, 117, 0.34),
+    0 0 72px rgba(70, 161, 117, 0.2),
+    inset 0 0 22px rgba(237, 237, 232, 0.12);
+  transform: rotate(-14deg) scaleY(0.38);
+  animation: orbit-drift 18s linear infinite;
+}
+.black-hole-disk::after {
+  content: '';
+  position: absolute;
+  inset: 14%;
+  border: 1px solid rgba(237, 237, 232, 0.22);
+  border-radius: 50%;
+}
+.black-hole-core {
+  position: absolute;
+  inset: 36%;
+  z-index: 2;
+  border-radius: 50%;
+  background: #020303;
+  box-shadow:
+    0 0 0 1px rgba(237, 237, 232, 0.1),
+    0 0 30px 8px rgba(1, 3, 3, 0.95),
+    0 0 70px 24px rgba(44, 116, 83, 0.16);
+}
+.black-hole-lens {
+  position: absolute;
+  inset: 29%;
+  z-index: 1;
+  border-radius: 50%;
+  border: 1px solid rgba(237, 237, 232, 0.17);
+  box-shadow: 0 0 26px rgba(237, 237, 232, 0.08);
+}
+.black-hole-visual--compact { width: min(100%, 16rem); }
+.black-hole-visual--compact .black-hole-disk { animation-duration: 24s; }
+@keyframes orbit-drift { to { transform: rotate(346deg) scaleY(0.38); } }
 
 .form-field {
   width: 100%; border: 1px solid hsl(var(--border)); background: hsl(var(--card));

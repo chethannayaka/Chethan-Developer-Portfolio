@@ -1,0 +1,612 @@
+REDESIGN THE FRONTEND VISUAL EXPERIENCE OF MY EXISTING PORTFOLIO.
+
+IMPORTANT: READ THIS ENTIRE PROMPT BEFORE MODIFYING ANY CODE.
+
+I want the portfolio to become a PREMIUM, ELEGANT, IMMERSIVE SPACE-THEMED DEVELOPER WEBSITE.
+
+The visual concept is:
+
+BLACK HOLE + DEEP SPACE + GRAVITY + AI + PREMIUM TECHNOLOGY
+
+This must NOT look like a generic developer portfolio.
+
+It must NOT look like:
+- a normal resume website
+- a generic dashboard template
+- a SaaS admin dashboard
+- cyberpunk
+- gaming UI
+- excessive neon
+- purple/blue futuristic template
+- excessive glassmorphism
+- a collection of rectangular cards
+
+The goal is a cinematic, sophisticated, minimal space interface.
+
+==================================================
+CORE VISUAL CONCEPT
+==================================================
+
+Build the visual identity around a BLACK HOLE / GRAVITATIONAL CORE.
+
+The black hole should feel like the central metaphor of the portfolio:
+
+The center represents the core of the developer.
+
+Projects, experience, skills, education and achievements can visually feel like information orbiting around the core.
+
+Use this metaphor subtly.
+
+DO NOT make every page literally show a huge black hole.
+
+Instead, establish the black-hole visual language across the website.
+
+Visual references:
+- deep space
+- gravitational lensing
+- orbital trajectories
+- accretion disk
+- subtle stars
+- atmospheric particles
+- dark matter
+- elegant scientific visualization
+- futuristic observatory
+- premium technology product interfaces
+
+==================================================
+COLOR SYSTEM
+==================================================
+
+Primary background:
+near-black / deep-space black.
+
+Use multiple extremely subtle dark tones rather than a completely flat black background.
+
+Example conceptual palette:
+
+#050505
+#080909
+#0D0E0E
+#141515
+#EDEDE8
+
+Accent:
+Use a restrained green accent based on my existing portfolio branding.
+
+The green must be subtle.
+
+Do NOT turn the entire interface green.
+
+Use accent color for:
+- active navigation
+- tiny indicators
+- selected states
+- important CTA
+- orbital highlights
+- small data points
+
+Avoid:
+- neon green everywhere
+- blue/purple gradients
+- rainbow gradients
+
+==================================================
+TYPOGRAPHY
+==================================================
+
+Typography should feel extremely premium.
+
+Use:
+- huge editorial display typography for major headings
+- clean modern sans-serif for body
+- tiny uppercase metadata
+- generous letter spacing for labels
+- strong contrast between huge headings and tiny labels
+
+Example visual hierarchy:
+
+01
+ABOUT
+
+Building practical software
+with AI & technology.
+
+The large heading should dominate the screen.
+
+Use whitespace aggressively.
+
+==================================================
+HOME PAGE
+==================================================
+
+The home page should feel like entering a futuristic observatory.
+
+The first screen should be visually impressive.
+
+Create:
+
+- deep black space background
+- extremely subtle stars/particles
+- central gravitational/black-hole visual
+- subtle accretion disk
+- atmospheric glow
+- very subtle orbital lines
+
+Place my identity and introduction around the visual rather than simply putting everything into a normal hero card.
+
+For example:
+
+small label:
+CHEthan NAYAKA K M
+
+large headline:
+Building practical software
+with AI & technology.
+
+small supporting text:
+Use my existing hero description.
+
+Then:
+
+[ EXPLORE PROJECTS ]
+
+[ DOWNLOAD CV ]
+
+The black hole should act as the visual anchor.
+
+The effect should be sophisticated and restrained.
+
+==================================================
+NAVIGATION
+==================================================
+
+Navigation should feel like a spacecraft/observatory interface.
+
+Keep it extremely minimal.
+
+Example:
+
+CHEthan / CN
+
+HOME
+ABOUT
+PROJECTS
+EXPERIENCE
+SKILLS
+ACHIEVEMENTS
+EDUCATION
+CONTACT
+
+CV
+
+Use:
+- thin separators
+- tiny status indicators
+- active page indicator
+- subtle hover transitions
+
+No giant navbar.
+
+No heavy background.
+
+Navigation should feel integrated into the space environment.
+
+==================================================
+PAGE TRANSITIONS
+==================================================
+
+Each major area must feel like entering a different environment.
+
+Use smooth transitions.
+
+Examples:
+
+HOME
+→ gravitational zoom / fade
+
+PROJECTS
+→ orbital project environment
+
+ABOUT
+→ observatory/profile environment
+
+EXPERIENCE
+→ timeline/orbit environment
+
+SKILLS
+→ constellation/environment
+
+ACHIEVEMENTS
+→ mission-control style environment
+
+EDUCATION
+→ academic observatory environment
+
+CONTACT
+→ deep-space communication environment
+
+These are visual metaphors.
+
+Do NOT make them cheesy.
+
+==================================================
+PROJECTS PAGE
+==================================================
+
+Create a dedicated PROJECTS environment.
+
+Do NOT display projects as a simple vertical list.
+
+Use an elegant orbital/grid visualization.
+
+Each project can feel like an object in an orbital system.
+
+Example:
+
+             PROJECT 02
+
+        ● Student Performance
+              Prediction
+
+
+PROJECT 01                 PROJECT 03
+
+Elderly Companion          Smart PDS
+System
+
+The project cards should feel like floating panels in space.
+
+Use:
+- subtle depth
+- thin borders
+- dark surfaces
+- small metadata
+- restrained hover glow
+- project number
+- technology tags
+- GitHub/demo action
+
+When hovering a project:
+- subtle gravitational movement
+- slight scale
+- orbital highlight
+- smooth transition
+
+When opening a project:
+show a dedicated project detail view/page.
+
+Use only my existing project information.
+
+Do NOT invent project details.
+
+Make Elderly Companion System visually prominent because it already has the existing Top 5 finalist achievement.
+
+==================================================
+ABOUT PAGE
+==================================================
+
+Do NOT make About a normal text section.
+
+Create an "identity / profile observatory".
+
+Large:
+
+ABOUT
+
+Then my existing introduction.
+
+Use a visual structure similar to a scientific profile:
+
+NAME
+Chethan Nayaka K M
+
+FIELD
+B.E. CSE (AI & ML)
+
+FOCUS
+Software / AI / ML
+
+Then the existing About content.
+
+Use thin orbital lines and subtle visual markers.
+
+==================================================
+EXPERIENCE PAGE
+==================================================
+
+Create a sophisticated orbital timeline.
+
+Each experience becomes a mission/trajectory.
+
+For example:
+
+● MTD Community
+  Technical & Mentorship Intern
+
+        ↓
+
+● Smart India Hackathon
+  Technical Volunteer & Maintainer
+
+Use the existing information only.
+
+No fake responsibilities.
+
+==================================================
+SKILLS PAGE
+==================================================
+
+Create a "TECH CONSTELLATION".
+
+Skills should NOT look like a list of badges.
+
+Instead:
+
+LANGUAGES
+● Python
+● C
+● JavaScript
+...
+
+FRONTEND
+● HTML
+● CSS
+● React
+...
+
+AI / ML
+● NumPy
+● Pandas
+● scikit-learn
+...
+
+TOOLS
+● Git
+● GitHub
+● VS Code
+
+Use constellation/orbit styling.
+
+Technologies can appear as connected nodes.
+
+Subtle hover interaction:
+when hovering a skill, connected lines/nodes become visible.
+
+Keep it elegant.
+
+==================================================
+ACHIEVEMENTS PAGE
+==================================================
+
+Create a "MISSION RECORD" style interface.
+
+Large achievement:
+
+TOP 5
+FINALIST
+
+Then the existing achievement information.
+
+Use large typography and subtle scientific markers.
+
+Do not exaggerate the achievement.
+
+==================================================
+EDUCATION PAGE
+==================================================
+
+Create an academic timeline/orbit.
+
+Use existing education information.
+
+Make it feel like a research/observatory record rather than a resume.
+
+==================================================
+CONTACT PAGE
+==================================================
+
+Create a "COMMUNICATION CHANNEL" aesthetic.
+
+Large heading:
+
+LET'S CONNECT
+
+Then existing email/social/contact information.
+
+Contact form should feel like a communication console but remain extremely simple.
+
+No fake terminal UI.
+
+No excessive glowing borders.
+
+==================================================
+CV
+==================================================
+
+Create a premium CV access button.
+
+Use:
+
+DOWNLOAD CV
+
+The button should look like a small high-quality interface control.
+
+If an actual CV file exists, connect it.
+
+If no CV exists, DO NOT invent one.
+
+==================================================
+BACKGROUND SYSTEM
+==================================================
+
+Create a reusable global background visual system.
+
+Possible elements:
+
+- subtle star field
+- tiny particles
+- extremely subtle noise/grain
+- gravitational arcs
+- orbital paths
+- atmospheric gradients
+- black-hole visual
+
+Keep performance in mind.
+
+Do NOT use heavy 3D libraries unless absolutely necessary.
+
+Prefer:
+- CSS
+- SVG
+- Canvas
+- lightweight React components
+
+If using Canvas:
+make sure it does not hurt mobile performance.
+
+==================================================
+BLACK HOLE VISUAL
+==================================================
+
+Create a reusable BlackHoleVisual component.
+
+It should contain:
+
+- central dark gravitational core
+- subtle accretion disk
+- soft atmospheric glow
+- gravitational lensing effect
+- tiny particles
+- subtle rotation
+
+The visual should be abstract and elegant.
+
+Do NOT create a realistic violent astronomical scene.
+
+It should feel like a premium abstract visualization.
+
+Allow it to be reused on Home and selectively on other pages.
+
+==================================================
+INTERACTION DESIGN
+==================================================
+
+Use subtle interactions:
+
+- smooth hover
+- gravitational movement
+- soft opacity transitions
+- orbital movement
+- page transitions
+- active navigation states
+- subtle cursor interaction if appropriate
+
+Everything must remain fast and professional.
+
+Animation should never distract from the content.
+
+==================================================
+RESPONSIVE DESIGN
+==================================================
+
+Desktop:
+immersive cinematic layout.
+
+Tablet:
+reduce visual scale while maintaining hierarchy.
+
+Mobile:
+DO NOT simply shrink the desktop version.
+
+Create a deliberate mobile composition.
+
+The black-hole visual should become smaller.
+
+Orbital layouts should transform into elegant stacked layouts.
+
+Navigation should become a clean mobile menu.
+
+No horizontal scrolling.
+
+==================================================
+TECHNICAL REQUIREMENTS
+==================================================
+
+Preserve:
+- React
+- TypeScript
+- Vite
+- existing project structure
+- existing data
+- existing REST API demo
+- existing GitHub/LinkedIn/email links
+- existing project information
+- existing experience
+- existing education
+- existing achievements
+
+Use React Router if needed to create real pages:
+
+/
+ /about
+ /projects
+ /projects/:projectId
+ /experience
+ /skills
+ /achievements
+ /education
+ /contact
+
+Each route should feel like a separate visual destination.
+
+IMPORTANT:
+Do NOT make every page use the exact same layout.
+
+Each page should have a distinct visual composition while maintaining the same overall design language.
+
+==================================================
+QUALITY BAR
+==================================================
+
+The final interface should feel like:
+
+A PREMIUM DIGITAL OBSERVATORY FOR A SOFTWARE ENGINEER.
+
+Imagine someone opens the website and thinks:
+
+"This isn't a resume.
+This is a designed digital experience."
+
+The design should feel:
+- premium
+- elegant
+- cinematic
+- intelligent
+- futuristic
+- minimal
+- sophisticated
+- technically polished
+
+NOT:
+- childish
+- gamer-like
+- cyberpunk
+- template-like
+- overly colorful
+- overly animated
+- cluttered
+
+Before editing:
+1. Inspect the entire existing frontend.
+2. Reuse existing components and data.
+3. Plan the visual system.
+4. Implement the new UI.
+5. Run typecheck.
+6. Run production build.
+7. Verify desktop and mobile.
+8. Fix all errors.
+
+Do NOT touch Vercel configuration.
+Do NOT modify backend/API code unless absolutely necessary.
+Do NOT remove existing functionality.
+Do NOT invent content.

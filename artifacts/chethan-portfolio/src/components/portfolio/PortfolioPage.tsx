@@ -228,6 +228,21 @@ function unavailableAction(label: string) {
   window.alert(`${label} is not available yet. The relevant URL or file has not been provided.`);
 }
 
+function BlackHoleVisual({ compact = false }: { compact?: boolean }) {
+  return (
+    <div
+      className={`black-hole-visual ${compact ? 'black-hole-visual--compact' : ''}`}
+      aria-hidden="true"
+      data-testid="visual-black-hole"
+    >
+      <div className="black-hole-stars" />
+      <div className="black-hole-disk" />
+      <div className="black-hole-lens" />
+      <div className="black-hole-core" />
+    </div>
+  );
+}
+
 function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [location] = useLocation();
@@ -359,34 +374,12 @@ function Hero() {
             </a>
           </div>
         </div>
-        <div className="hero-entrance-delay relative lg:justify-self-end">
-          <div className="absolute -right-8 -top-8 h-28 w-28 rounded-full border border-primary/25" />
-          <div className="absolute -bottom-7 -left-7 h-20 w-20 bg-accent/20" />
-          <div className="code-window relative overflow-hidden rounded-2xl border border-secondary/15 bg-secondary text-secondary-foreground">
-            <div className="flex items-center justify-between border-b border-secondary-foreground/15 px-5 py-4">
-              <div className="flex items-center gap-2">
-                <span className="h-2 w-2 rounded-full bg-destructive" />
-                <span className="h-2 w-2 rounded-full bg-accent" />
-                <span className="h-2 w-2 rounded-full bg-primary" />
-              </div>
-              <span className="font-mono text-[10px] text-secondary-foreground/50">chethan.tsx</span>
-            </div>
-            <div className="p-6 font-mono text-[11px] leading-7 sm:p-8 sm:text-xs">
-              <div><span className="text-accent">const</span> <span className="text-primary-foreground">developer</span> = {'{'}</div>
-              <div className="pl-5"><span className="text-secondary-foreground/60">name:</span> <span className="text-accent">&apos;Chethan Nayaka K M&apos;</span>,</div>
-              <div className="pl-5"><span className="text-secondary-foreground/60">focus:</span> <span className="text-accent">&apos;useful systems&apos;</span>,</div>
-              <div className="pl-5"><span className="text-secondary-foreground/60">mode:</span> <span className="text-accent">&apos;learn → build → refine&apos;</span>,</div>
-              <div className="pl-5"><span className="text-secondary-foreground/60">status:</span> <span className="text-primary-foreground">true</span>,</div>
-              <div>{'}'};</div>
-              <div className="mt-6 flex items-center gap-2 text-primary-foreground/70">
-                <span className="text-accent">↳</span> building with intent
-                <span className="ml-1 inline-block h-4 w-[1px] animate-pulse bg-accent" />
-              </div>
-            </div>
-            <div className="flex items-center justify-between border-t border-secondary-foreground/15 px-5 py-3 font-mono text-[10px] text-secondary-foreground/50">
-              <span>BE CSE (AI &amp; ML)</span>
-              <span>01 / 01</span>
-            </div>
+        <div className="hero-entrance-delay relative flex justify-center lg:justify-self-end">
+          <div className="absolute -right-5 top-6 h-24 w-24 rounded-full border border-primary/20" />
+          <div className="absolute -bottom-5 -left-5 h-16 w-16 rounded-full border border-border" />
+          <BlackHoleVisual />
+          <div className="absolute bottom-7 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[10px] uppercase tracking-[0.18em] text-foreground/60">
+            gravitational core / 01
           </div>
         </div>
       </div>
@@ -411,13 +404,33 @@ function About({ showHeading = true }: { showHeading?: boolean }) {
           </p>
         </SectionHeading>
       )}
-      <div className="grid gap-10 border-t border-border pt-10 md:grid-cols-[1.1fr_0.9fr]">
-        <div className="space-y-5 text-lg leading-8 text-foreground/80">
-          <p>
-            Final-year B.E. Computer Science and Engineering (AI &amp; ML) student with hands-on experience in web development, machine learning, system design and technical collaboration. Interested in building practical software solutions and applying programming, problem-solving and engineering concepts to real-world problems.
-          </p>
+      <div className="profile-observatory relative overflow-hidden border-t border-border pt-10">
+        <div className="profile-orbits pointer-events-none absolute inset-0" aria-hidden="true" />
+        <div className="relative grid gap-10 md:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-5 text-lg leading-8 text-foreground/80">
+            <p>
+              Final-year B.E. Computer Science and Engineering (AI &amp; ML) student with hands-on experience in web development, machine learning, system design and technical collaboration. Interested in building practical software solutions and applying programming, problem-solving and engineering concepts to real-world problems.
+            </p>
+          </div>
+          <div className="profile-orbit-panel rounded-2xl border border-border bg-card/70 p-6 sm:p-8">
+            <BlackHoleVisual compact />
+            <div className="mt-6 grid gap-4 border-t border-border pt-5">
+              <div className="flex items-baseline justify-between gap-4">
+                <span className="eyebrow">Name</span>
+                <span className="text-right text-sm font-semibold">Chethan Nayaka K M</span>
+              </div>
+              <div className="flex items-baseline justify-between gap-4">
+                <span className="eyebrow">Field</span>
+                <span className="text-right text-sm font-semibold">B.E. CSE (AI &amp; ML)</span>
+              </div>
+              <div className="flex items-baseline justify-between gap-4">
+                <span className="eyebrow">Focus</span>
+                <span className="text-right text-sm font-semibold">Software / AI / ML</span>
+              </div>
+            </div>
+          </div>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-2">
+        <div className="relative mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4">
           {[
             ['01', 'Build for people'],
             ['02', 'Learn by making'],
@@ -450,7 +463,7 @@ function Skills({ showHeading = true }: { showHeading?: boolean }) {
             </p>
           </SectionHeading>
         )}
-        <div className="grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
+        <div className="constellation-grid grid gap-5 lg:grid-cols-[0.85fr_1.15fr]">
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
             {skillGroups.map((group) => {
               const Icon = group.icon;
@@ -476,7 +489,7 @@ function Skills({ showHeading = true }: { showHeading?: boolean }) {
               );
             })}
           </div>
-          <div className="rounded-2xl border border-border bg-secondary p-7 text-secondary-foreground sm:p-9">
+          <div className="constellation-panel rounded-2xl border border-border bg-secondary p-7 text-secondary-foreground sm:p-9">
             <div className="flex items-start justify-between gap-5">
               <div className="grid h-12 w-12 place-items-center rounded-xl bg-accent/15 text-accent">
                 <SelectedIcon size={24} strokeWidth={1.5} />
@@ -487,7 +500,7 @@ function Skills({ showHeading = true }: { showHeading?: boolean }) {
             <p className="mt-3 max-w-lg text-sm leading-7 text-secondary-foreground/65">{selectedGroup.note}</p>
             <div className="mt-8 flex flex-wrap gap-2 border-t border-secondary-foreground/15 pt-6">
               {selectedGroup.skills.map((skill) => (
-                <span key={skill} className="rounded-full border border-secondary-foreground/20 px-3 py-2 font-mono text-[10px] text-secondary-foreground/80">
+                <span key={skill} className="constellation-node rounded-full border border-secondary-foreground/20 px-3 py-2 font-mono text-[10px] text-secondary-foreground/80">
                   {skill}
                 </span>
               ))}
@@ -533,11 +546,11 @@ function Experience({ showHeading = true }: { showHeading?: boolean }) {
             </p>
           </SectionHeading>
         )}
-        <div className="grid gap-4 lg:grid-cols-2">
+        <div className="experience-timeline grid gap-4 lg:grid-cols-2">
           {experiences.map((experience) => {
             const Icon = experience.icon;
             return (
-              <article key={experience.number} className="rounded-2xl border border-border bg-card p-7 sm:p-9">
+              <article key={experience.number} className="timeline-card relative rounded-2xl border border-border bg-card p-7 sm:p-9">
                 <div className="flex items-start justify-between gap-5">
                   <div className="grid h-12 w-12 place-items-center rounded-xl bg-primary/10 text-primary">
                     <Icon size={23} strokeWidth={1.5} />
@@ -574,7 +587,7 @@ function Projects({ showHeading = true }: { showHeading?: boolean }) {
           </p>
         </SectionHeading>
       )}
-      <div className="grid gap-4 md:grid-cols-2">
+      <div className="project-orbit-grid grid gap-4 md:grid-cols-2">
         {projectData.map((project) => (
           <article key={project.index} className={`project-card group rounded-2xl border border-border bg-card p-6 sm:p-8 ${project.index === '01' ? 'md:col-span-2' : ''}`}>
             <Link href={`/projects/${project.index}`} className="focus-ring -m-2 block rounded-xl p-2">
@@ -662,7 +675,7 @@ function Projects({ showHeading = true }: { showHeading?: boolean }) {
 
 function Achievements({ showHeading = true }: { showHeading?: boolean }) {
   return (
-    <section id="achievements" className={`scroll-mt-24 bg-secondary text-secondary-foreground ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
+    <section id="achievements" className={`mission-record scroll-mt-24 bg-secondary text-secondary-foreground ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
       <div className="section-wrap">
         <div className="mb-12 flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-secondary-foreground/55">
           <Trophy size={16} className="text-accent" />
@@ -696,7 +709,7 @@ function Education({ showHeading = true }: { showHeading?: boolean }) {
   return (
     <section id="education" className={`section-wrap scroll-mt-24 ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
       {showHeading && <SectionHeading number="06" eyebrow="Where I am learning" title="A computer science foundation with an AI & ML direction." />}
-      <div className="grid gap-4 md:grid-cols-[1fr_0.42fr]">
+      <div className="education-observatory grid gap-4 md:grid-cols-[1fr_0.42fr]">
         <div className="rounded-2xl border border-border bg-card p-7 sm:p-9">
           <div className="flex items-start justify-between gap-6">
             <div className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-primary/10 text-primary">
@@ -834,7 +847,7 @@ function Contact({ showHeading = true }: { showHeading?: boolean }) {
   };
 
   return (
-    <section id="contact" className={`scroll-mt-24 border-t border-border bg-muted/35 ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
+    <section id="contact" className={`communication-console scroll-mt-24 border-t border-border bg-muted/35 ${showHeading ? 'py-24 sm:py-32' : 'py-16 sm:py-24'}`}>
       <div className="section-wrap">
         {showHeading && (
           <SectionHeading number="08" eyebrow="Open channel" title="Have a thoughtful problem to work on?">
@@ -1008,7 +1021,7 @@ function PageIntro({
   description: string;
 }) {
   return (
-    <section className="relative overflow-hidden border-b border-border pt-[72px]">
+    <section className="page-intro relative overflow-hidden border-b border-border pt-[72px]">
       <div className="portfolio-grid pointer-events-none absolute inset-0 opacity-45" />
       <div className="section-wrap relative py-20 sm:py-28">
         <p className="eyebrow flex items-center gap-3">
@@ -1196,7 +1209,7 @@ export function ContactPage() {
   return (
     <PortfolioLayout>
       <main>
-        <PageIntro number="07" eyebrow="Contact" title="A good place to start a real conversation." description="Reach out through the verified links below, or prepare a message using the existing locally validated form." />
+        <PageIntro number="07" eyebrow="Contact" title="Let&apos;s connect." description="Reach out through the verified links below, or prepare a message using the existing locally validated form." />
         <Contact showHeading={false} />
       </main>
     </PortfolioLayout>
